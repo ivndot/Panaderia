@@ -7,18 +7,19 @@ package view;
 
 /**
  *
- * @author ivn
+ * @author IVAN
  */
-public class LoginFrm extends javax.swing.JFrame {
-
+public class LoginView extends javax.swing.JFrame {
+        
     /**
-     * Creates new form LoginFrm
+     * Creates new form LoginView
      */
-    public LoginFrm() {
+    public LoginView() {
         initComponents();
-        this.setSize(500, 600);
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setSize(830, 500);
+        this.setLocationRelativeTo(null);
+        this.txt_passwd.setEchoChar('\u25CF');
     }
 
     /**
@@ -30,36 +31,33 @@ public class LoginFrm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lb_login = new javax.swing.JLabel();
         txt_user = new javax.swing.JTextField();
         txt_passwd = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
+        lb_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(null);
-        setPreferredSize(null);
-        setResizable(false);
-        setSize(new java.awt.Dimension(500, 600));
         getContentPane().setLayout(null);
 
-        lb_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
-        getContentPane().add(lb_login);
-        lb_login.setBounds(180, 110, 128, 128);
-
-        txt_user.setText("User");
-        txt_user.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
-        txt_user.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txt_user.setFont(txt_user.getFont());
+        txt_user.setBorder(null);
         txt_user.setOpaque(false);
         getContentPane().add(txt_user);
-        txt_user.setBounds(70, 280, 350, 65);
+        txt_user.setBounds(508, 210, 240, 35);
 
-        txt_passwd.setText("jPasswordField1");
+        txt_passwd.setFont(txt_passwd.getFont());
+        txt_passwd.setBorder(null);
+        txt_passwd.setOpaque(false);
         getContentPane().add(txt_passwd);
-        txt_passwd.setBounds(70, 380, 230, 30);
+        txt_passwd.setBounds(508, 309, 240, 35);
 
-        btn_login.setText("jButton1");
+        btn_login.setContentAreaFilled(false);
         getContentPane().add(btn_login);
-        btn_login.setBounds(70, 470, 230, 30);
+        btn_login.setBounds(500, 377, 250, 50);
+
+        lb_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login.png"))); // NOI18N
+        getContentPane().add(lb_fondo);
+        lb_fondo.setBounds(0, 0, 830, 510);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -81,27 +79,27 @@ public class LoginFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginFrm().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });
     }
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
-    private javax.swing.JLabel lb_login;
+    private javax.swing.JLabel lb_fondo;
     private javax.swing.JPasswordField txt_passwd;
     private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
