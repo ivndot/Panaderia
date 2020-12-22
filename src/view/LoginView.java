@@ -43,13 +43,13 @@ public class LoginView extends javax.swing.JFrame {
         txt_user.setBorder(null);
         txt_user.setOpaque(false);
         getContentPane().add(txt_user);
-        txt_user.setBounds(508, 210, 240, 35);
+        txt_user.setBounds(508, 206, 240, 35);
 
         txt_passwd.setFont(txt_passwd.getFont());
         txt_passwd.setBorder(null);
         txt_passwd.setOpaque(false);
         getContentPane().add(txt_passwd);
-        txt_passwd.setBounds(508, 309, 240, 35);
+        txt_passwd.setBounds(508, 305, 240, 35);
 
         btn_login.setContentAreaFilled(false);
         getContentPane().add(btn_login);
@@ -57,7 +57,7 @@ public class LoginView extends javax.swing.JFrame {
 
         lb_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login.png"))); // NOI18N
         getContentPane().add(lb_fondo);
-        lb_fondo.setBounds(0, 0, 830, 510);
+        lb_fondo.setBounds(0, 0, 830, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

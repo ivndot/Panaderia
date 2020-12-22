@@ -19,6 +19,8 @@ public class MenuView extends javax.swing.JFrame {
         this.setResizable(false);
         this.setSize(1030, 600);
         this.setLocationRelativeTo(null);
+        //System.out.println("WIDTH: "+this.jp_empleado.getWidth());
+        //System.out.println("HEIGTH: "+this.jp_empleado.getHeight());
     }
 
     /**

@@ -16,6 +16,9 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
      */
     public NuevoEmpleadoView() {
         initComponents();
+        this.setResizable(false);
+        this.setSize(930, 500);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,18 +30,128 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jpanel_container = new javax.swing.JPanel();
+        jp_header = new javax.swing.JPanel();
+        lb_iconUser = new javax.swing.JLabel();
+        lb_user = new javax.swing.JLabel();
+        lb_sucursalEmpleado = new javax.swing.JLabel();
+        cbox_sucursalEmpleado = new javax.swing.JComboBox<>();
+        lb_telefonoEmpleado = new javax.swing.JLabel();
+        txt_telefonoEmpleado = new javax.swing.JTextField();
+        lb_direccionEmpleado = new javax.swing.JLabel();
+        txt_direccionEmpleado = new javax.swing.JTextField();
+        lb_apeMatEmpleado = new javax.swing.JLabel();
+        txt_apeMatEmpleado = new javax.swing.JTextField();
+        lb_apePatEmpleado = new javax.swing.JLabel();
+        txt_apePatEmpleado = new javax.swing.JTextField();
+        lb_nombreEmpleado = new javax.swing.JLabel();
+        txt_nombreEmpleado = new javax.swing.JTextField();
+        lb_id = new javax.swing.JLabel();
+        txt_idEmpleado = new javax.swing.JTextField();
+        btn_enviar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 889, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jpanel_container.setBackground(new java.awt.Color(255, 255, 255));
+        jpanel_container.setLayout(null);
+
+        jp_header.setBackground(new java.awt.Color(34, 40, 49));
+        jp_header.setLayout(null);
+
+        lb_iconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
+        jp_header.add(lb_iconUser);
+        lb_iconUser.setBounds(840, 5, 48, 48);
+
+        lb_user.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lb_user.setForeground(new java.awt.Color(255, 255, 255));
+        lb_user.setText("Adminstrador");
+        jp_header.add(lb_user);
+        lb_user.setBounds(700, 20, 130, 30);
+
+        jpanel_container.add(jp_header);
+        jp_header.setBounds(0, 0, 930, 60);
+
+        lb_sucursalEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_sucursalEmpleado.setText("Sucursal donde labora");
+        jpanel_container.add(lb_sucursalEmpleado);
+        lb_sucursalEmpleado.setBounds(520, 250, 170, 20);
+
+        cbox_sucursalEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal", "Item 2", "Item 3", "Item 4" }));
+        jpanel_container.add(cbox_sucursalEmpleado);
+        cbox_sucursalEmpleado.setBounds(520, 270, 200, 30);
+
+        lb_telefonoEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_telefonoEmpleado.setText("Teléfono");
+        jpanel_container.add(lb_telefonoEmpleado);
+        lb_telefonoEmpleado.setBounds(520, 180, 170, 20);
+
+        txt_telefonoEmpleado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_telefonoEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_telefonoEmpleado);
+        txt_telefonoEmpleado.setBounds(520, 200, 200, 30);
+
+        lb_direccionEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_direccionEmpleado.setText("Dirección");
+        jpanel_container.add(lb_direccionEmpleado);
+        lb_direccionEmpleado.setBounds(520, 110, 170, 20);
+
+        txt_direccionEmpleado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_direccionEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_direccionEmpleado);
+        txt_direccionEmpleado.setBounds(520, 130, 200, 30);
+
+        lb_apeMatEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_apeMatEmpleado.setText("Apellido materno");
+        jpanel_container.add(lb_apeMatEmpleado);
+        lb_apeMatEmpleado.setBounds(230, 320, 170, 20);
+
+        txt_apeMatEmpleado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_apeMatEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_apeMatEmpleado);
+        txt_apeMatEmpleado.setBounds(230, 340, 200, 30);
+
+        lb_apePatEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_apePatEmpleado.setText("Apellido paterno");
+        jpanel_container.add(lb_apePatEmpleado);
+        lb_apePatEmpleado.setBounds(230, 250, 170, 20);
+
+        txt_apePatEmpleado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_apePatEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_apePatEmpleado);
+        txt_apePatEmpleado.setBounds(230, 270, 200, 30);
+
+        lb_nombreEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_nombreEmpleado.setText("Nombre");
+        jpanel_container.add(lb_nombreEmpleado);
+        lb_nombreEmpleado.setBounds(230, 180, 120, 20);
+
+        txt_nombreEmpleado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_nombreEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_nombreEmpleado);
+        txt_nombreEmpleado.setBounds(230, 200, 200, 30);
+
+        lb_id.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_id.setText("Id Empleado");
+        jpanel_container.add(lb_id);
+        lb_id.setBounds(230, 110, 120, 20);
+
+        txt_idEmpleado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_idEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_idEmpleado);
+        txt_idEmpleado.setBounds(230, 130, 200, 30);
+
+        btn_enviar.setBackground(new java.awt.Color(240, 84, 84));
+        btn_enviar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_enviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/btn_aceptar.png"))); // NOI18N
+        btn_enviar.setBorder(null);
+        btn_enviar.setBorderPainted(false);
+        btn_enviar.setContentAreaFilled(false);
+        jpanel_container.add(btn_enviar);
+        btn_enviar.setBounds(370, 410, 190, 40);
+
+        getContentPane().add(jpanel_container);
+        jpanel_container.setBounds(0, 0, 930, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +192,24 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_enviar;
+    private javax.swing.JComboBox<String> cbox_sucursalEmpleado;
+    private javax.swing.JPanel jp_header;
+    private javax.swing.JPanel jpanel_container;
+    private javax.swing.JLabel lb_apeMatEmpleado;
+    private javax.swing.JLabel lb_apePatEmpleado;
+    private javax.swing.JLabel lb_direccionEmpleado;
+    private javax.swing.JLabel lb_iconUser;
+    private javax.swing.JLabel lb_id;
+    private javax.swing.JLabel lb_nombreEmpleado;
+    private javax.swing.JLabel lb_sucursalEmpleado;
+    private javax.swing.JLabel lb_telefonoEmpleado;
+    private javax.swing.JLabel lb_user;
+    private javax.swing.JTextField txt_apeMatEmpleado;
+    private javax.swing.JTextField txt_apePatEmpleado;
+    private javax.swing.JTextField txt_direccionEmpleado;
+    private javax.swing.JTextField txt_idEmpleado;
+    private javax.swing.JTextField txt_nombreEmpleado;
+    private javax.swing.JTextField txt_telefonoEmpleado;
     // End of variables declaration//GEN-END:variables
 }
