@@ -65,9 +65,10 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
 
         lb_user.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lb_user.setForeground(new java.awt.Color(255, 255, 255));
+        lb_user.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_user.setText("Adminstrador");
         jp_header.add(lb_user);
-        lb_user.setBounds(700, 20, 130, 30);
+        lb_user.setBounds(10, 20, 820, 30);
 
         jpanel_container.add(jp_header);
         jp_header.setBounds(0, 0, 930, 60);
