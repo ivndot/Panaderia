@@ -51,9 +51,11 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().add(txt_passwd);
         txt_passwd.setBounds(508, 305, 240, 35);
 
+        btn_login.setBorder(null);
+        btn_login.setBorderPainted(false);
         btn_login.setContentAreaFilled(false);
         getContentPane().add(btn_login);
-        btn_login.setBounds(500, 377, 250, 50);
+        btn_login.setBounds(500, 373, 250, 50);
 
         lb_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login.png"))); // NOI18N
         getContentPane().add(lb_fondo);
@@ -98,9 +100,9 @@ public class LoginView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_login;
+    public javax.swing.JButton btn_login;
     private javax.swing.JLabel lb_fondo;
-    private javax.swing.JPasswordField txt_passwd;
-    private javax.swing.JTextField txt_user;
+    public javax.swing.JPasswordField txt_passwd;
+    public javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
 }

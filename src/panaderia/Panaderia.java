@@ -5,6 +5,11 @@
  */
 package panaderia;
 
+import controler.LoginCtrl;
+import model.Administrador;
+import model.sql.SqlAdministrador;
+import view.LoginView;
+
 /**
  *
  * @author ivn
@@ -16,7 +21,12 @@ public class Panaderia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("hola mundo");
+
+        //Abre la vista login
+        LoginView vista = new LoginView();
+        LoginCtrl controlador = new LoginCtrl(vista);
+        vista.setVisible(true);
+
     }
-    
+
 }

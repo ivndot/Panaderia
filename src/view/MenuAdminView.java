@@ -9,12 +9,12 @@ package view;
  *
  * @author IVAN
  */
-public class MenuView extends javax.swing.JFrame {
+public class MenuAdminView extends javax.swing.JFrame {
 
     /**
      * Creates new form HomeView
      */
-    public MenuView() {
+    public MenuAdminView() {
         initComponents();
         this.setResizable(false);
         this.setSize(1030, 600);
@@ -55,6 +55,7 @@ public class MenuView extends javax.swing.JFrame {
         btn_home = new javax.swing.JButton();
         lb_home = new javax.swing.JLabel();
         jpanel_header = new javax.swing.JPanel();
+        lb_rol = new javax.swing.JLabel();
         lb_user = new javax.swing.JLabel();
         lb_iconUser = new javax.swing.JLabel();
         panelSlider = new rojerusan.RSPanelsSlider();
@@ -120,6 +121,8 @@ public class MenuView extends javax.swing.JFrame {
         jpanel_salario.setLayout(null);
 
         btn_salario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cash.png"))); // NOI18N
+        btn_salario.setBorder(null);
+        btn_salario.setBorderPainted(false);
         btn_salario.setContentAreaFilled(false);
         jpanel_salario.add(btn_salario);
         btn_salario.setBounds(26, 20, 48, 48);
@@ -142,6 +145,8 @@ public class MenuView extends javax.swing.JFrame {
         jpanel_ventas.setLayout(null);
 
         btn_ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bill.png"))); // NOI18N
+        btn_ventas.setBorder(null);
+        btn_ventas.setBorderPainted(false);
         btn_ventas.setContentAreaFilled(false);
         jpanel_ventas.add(btn_ventas);
         btn_ventas.setBounds(26, 20, 48, 48);
@@ -164,6 +169,8 @@ public class MenuView extends javax.swing.JFrame {
         jpanel_empleado.setLayout(null);
 
         btn_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/employee.png"))); // NOI18N
+        btn_empleado.setBorder(null);
+        btn_empleado.setBorderPainted(false);
         btn_empleado.setContentAreaFilled(false);
         jpanel_empleado.add(btn_empleado);
         btn_empleado.setBounds(26, 20, 48, 48);
@@ -186,6 +193,8 @@ public class MenuView extends javax.swing.JFrame {
         jpanel_sucursal.setLayout(null);
 
         btn_sucursal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/building.png"))); // NOI18N
+        btn_sucursal.setBorder(null);
+        btn_sucursal.setBorderPainted(false);
         btn_sucursal.setContentAreaFilled(false);
         jpanel_sucursal.add(btn_sucursal);
         btn_sucursal.setBounds(26, 20, 48, 48);
@@ -208,6 +217,8 @@ public class MenuView extends javax.swing.JFrame {
         jpanel_home.setLayout(null);
 
         btn_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
+        btn_home.setBorder(null);
+        btn_home.setBorderPainted(false);
         btn_home.setContentAreaFilled(false);
         jpanel_home.add(btn_home);
         btn_home.setBounds(26, 20, 48, 48);
@@ -228,11 +239,19 @@ public class MenuView extends javax.swing.JFrame {
         jpanel_header.setBackground(new java.awt.Color(34, 40, 49));
         jpanel_header.setLayout(null);
 
+        lb_rol.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lb_rol.setForeground(new java.awt.Color(255, 255, 255));
+        lb_rol.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lb_rol.setText("Administrador");
+        jpanel_header.add(lb_rol);
+        lb_rol.setBounds(30, 20, 180, 30);
+
         lb_user.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lb_user.setForeground(new java.awt.Color(255, 255, 255));
-        lb_user.setText("Adminstrador");
+        lb_user.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_user.setText("Admin");
         jpanel_header.add(lb_user);
-        lb_user.setBounds(700, 20, 130, 30);
+        lb_user.setBounds(440, 20, 390, 30);
 
         lb_iconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
         jpanel_header.add(lb_iconUser);
@@ -252,14 +271,16 @@ public class MenuView extends javax.swing.JFrame {
         lb_logo.setBounds(290, 10, 350, 300);
 
         lb_bienvenido.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        lb_bienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_bienvenido.setText("¡Bienvenido...!");
         jp_home.add(lb_bienvenido);
-        lb_bienvenido.setBounds(300, 320, 350, 50);
+        lb_bienvenido.setBounds(10, 320, 910, 50);
 
         lb_userHome.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lb_userHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_userHome.setText("Ivan");
         jp_home.add(lb_userHome);
-        lb_userHome.setBounds(400, 380, 310, 50);
+        lb_userHome.setBounds(10, 380, 910, 50);
 
         panelSlider.add(jp_home, "card1");
 
@@ -268,11 +289,14 @@ public class MenuView extends javax.swing.JFrame {
         jp_sucursal.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sucursal");
         jp_sucursal.add(jLabel1);
-        jLabel1.setBounds(390, 10, 160, 50);
+        jLabel1.setBounds(10, 10, 900, 50);
 
         btn_nuevaSucursal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plus.png"))); // NOI18N
+        btn_nuevaSucursal.setBorder(null);
+        btn_nuevaSucursal.setBorderPainted(false);
         btn_nuevaSucursal.setContentAreaFilled(false);
         jp_sucursal.add(btn_nuevaSucursal);
         btn_nuevaSucursal.setBounds(90, 110, 32, 32);
@@ -312,6 +336,8 @@ public class MenuView extends javax.swing.JFrame {
         txt_buscarSucursal.setBounds(540, 105, 240, 30);
 
         btn_buscarSucursal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/btn_buscar.png"))); // NOI18N
+        btn_buscarSucursal.setBorder(null);
+        btn_buscarSucursal.setBorderPainted(false);
         btn_buscarSucursal.setContentAreaFilled(false);
         jp_sucursal.add(btn_buscarSucursal);
         btn_buscarSucursal.setBounds(800, 105, 80, 32);
@@ -323,11 +349,14 @@ public class MenuView extends javax.swing.JFrame {
         jp_empleado.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Empleado");
         jp_empleado.add(jLabel3);
-        jLabel3.setBounds(360, 10, 190, 50);
+        jLabel3.setBounds(10, 10, 910, 50);
 
         btn_nuevoEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plus.png"))); // NOI18N
+        btn_nuevoEmpleado.setBorder(null);
+        btn_nuevoEmpleado.setBorderPainted(false);
         btn_nuevoEmpleado.setContentAreaFilled(false);
         jp_empleado.add(btn_nuevoEmpleado);
         btn_nuevoEmpleado.setBounds(90, 110, 32, 32);
@@ -335,7 +364,7 @@ public class MenuView extends javax.swing.JFrame {
         lb_nuevoEmpleado.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lb_nuevoEmpleado.setText("Nuevo empleado");
         jp_empleado.add(lb_nuevoEmpleado);
-        lb_nuevoEmpleado.setBounds(130, 110, 150, 30);
+        lb_nuevoEmpleado.setBounds(130, 110, 260, 30);
 
         jtable_sucursal1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jtable_sucursal1.setModel(new javax.swing.table.DefaultTableModel(
@@ -367,6 +396,8 @@ public class MenuView extends javax.swing.JFrame {
         txt_buscarEmpleado.setBounds(540, 105, 240, 30);
 
         btn_buscarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/btn_buscar.png"))); // NOI18N
+        btn_buscarEmpleado.setBorder(null);
+        btn_buscarEmpleado.setBorderPainted(false);
         btn_buscarEmpleado.setContentAreaFilled(false);
         jp_empleado.add(btn_buscarEmpleado);
         btn_buscarEmpleado.setBounds(800, 105, 80, 32);
@@ -378,9 +409,10 @@ public class MenuView extends javax.swing.JFrame {
         jp_ventas.setLayout(null);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Ventas");
         jp_ventas.add(jLabel5);
-        jLabel5.setBounds(410, 10, 130, 50);
+        jLabel5.setBounds(10, 10, 910, 50);
 
         jtable_sucursal2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jtable_sucursal2.setModel(new javax.swing.table.DefaultTableModel(
@@ -408,6 +440,8 @@ public class MenuView extends javax.swing.JFrame {
         cbox_mes.setBounds(710, 130, 130, 30);
 
         btn_generarReporteMensual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/btn_generarReporteMensual.png"))); // NOI18N
+        btn_generarReporteMensual.setBorder(null);
+        btn_generarReporteMensual.setBorderPainted(false);
         btn_generarReporteMensual.setContentAreaFilled(false);
         jp_ventas.add(btn_generarReporteMensual);
         btn_generarReporteMensual.setBounds(290, 180, 350, 40);
@@ -419,9 +453,10 @@ public class MenuView extends javax.swing.JFrame {
         jp_salario.setLayout(null);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Salario");
         jp_salario.add(jLabel6);
-        jLabel6.setBounds(410, 20, 130, 50);
+        jLabel6.setBounds(10, 20, 900, 50);
 
         jtable_sucursal3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jtable_sucursal3.setModel(new javax.swing.table.DefaultTableModel(
@@ -453,6 +488,8 @@ public class MenuView extends javax.swing.JFrame {
         txt_buscarEmpleadoSalario.setBounds(90, 160, 240, 30);
 
         btn_buscarEmpleadoSalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/btn_buscar.png"))); // NOI18N
+        btn_buscarEmpleadoSalario.setBorder(null);
+        btn_buscarEmpleadoSalario.setBorderPainted(false);
         btn_buscarEmpleadoSalario.setContentAreaFilled(false);
         jp_salario.add(btn_buscarEmpleadoSalario);
         btn_buscarEmpleadoSalario.setBounds(350, 165, 80, 32);
@@ -486,21 +523,23 @@ public class MenuView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuView().setVisible(true);
+                new MenuAdminView().setVisible(true);
             }
         });
     }
@@ -509,15 +548,15 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscarEmpleado;
     private javax.swing.JButton btn_buscarEmpleadoSalario;
     private javax.swing.JButton btn_buscarSucursal;
-    private javax.swing.JButton btn_empleado;
+    public javax.swing.JButton btn_empleado;
     private javax.swing.JButton btn_generarReporteMensual;
-    private javax.swing.JButton btn_home;
-    private javax.swing.JButton btn_logout;
+    public javax.swing.JButton btn_home;
+    public javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_nuevaSucursal;
     private javax.swing.JButton btn_nuevoEmpleado;
-    private javax.swing.JButton btn_salario;
-    private javax.swing.JButton btn_sucursal;
-    private javax.swing.JButton btn_ventas;
+    public javax.swing.JButton btn_salario;
+    public javax.swing.JButton btn_sucursal;
+    public javax.swing.JButton btn_ventas;
     private javax.swing.JComboBox<String> cbox_anio;
     private javax.swing.JComboBox<String> cbox_mes;
     private javax.swing.JComboBox<String> cbox_mesSalario;
@@ -528,11 +567,11 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jp_empleado;
-    private javax.swing.JPanel jp_home;
-    private javax.swing.JPanel jp_salario;
-    private javax.swing.JPanel jp_sucursal;
-    private javax.swing.JPanel jp_ventas;
+    public javax.swing.JPanel jp_empleado;
+    public javax.swing.JPanel jp_home;
+    public javax.swing.JPanel jp_salario;
+    public javax.swing.JPanel jp_sucursal;
+    public javax.swing.JPanel jp_ventas;
     private javax.swing.JPanel jpanel_empleado;
     private javax.swing.JPanel jpanel_header;
     private javax.swing.JPanel jpanel_home;
@@ -560,12 +599,13 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel lb_logo;
     private javax.swing.JLabel lb_nuevaSucursal;
     private javax.swing.JLabel lb_nuevoEmpleado;
+    private javax.swing.JLabel lb_rol;
     private javax.swing.JLabel lb_salario;
     private javax.swing.JLabel lb_sucursal;
-    private javax.swing.JLabel lb_user;
-    private javax.swing.JLabel lb_userHome;
+    public javax.swing.JLabel lb_user;
+    public javax.swing.JLabel lb_userHome;
     private javax.swing.JLabel lb_ventas;
-    private rojerusan.RSPanelsSlider panelSlider;
+    public rojerusan.RSPanelsSlider panelSlider;
     private javax.swing.JTextField txt_buscarEmpleado;
     private javax.swing.JTextField txt_buscarEmpleadoSalario;
     private javax.swing.JTextField txt_buscarSucursal;
