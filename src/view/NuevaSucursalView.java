@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.event.WindowListener;
+
 /**
  *
  * @author IVAN
@@ -16,8 +18,11 @@ public class NuevaSucursalView extends javax.swing.JFrame {
      */
     public NuevaSucursalView() {
         initComponents();
+        this.setResizable(false);
+        this.setSize(930, 500);
+        this.setLocationRelativeTo(null);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,18 +32,116 @@ public class NuevaSucursalView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jpanel_container = new javax.swing.JPanel();
+        jp_header = new javax.swing.JPanel();
+        lb_iconUser = new javax.swing.JLabel();
+        lb_user = new javax.swing.JLabel();
+        lb_contraseniaSucursal = new javax.swing.JLabel();
+        txt_contraseniaSucursal = new javax.swing.JTextField();
+        lb_usuarioSucursal = new javax.swing.JLabel();
+        txt_usuarioSucursal = new javax.swing.JTextField();
+        lb_telefonoSucursal = new javax.swing.JLabel();
+        txt_telefonoSucursal = new javax.swing.JTextField();
+        lb_direccionSucursal = new javax.swing.JLabel();
+        txt_direccionSucursal = new javax.swing.JTextField();
+        lb_descripcionSucursal = new javax.swing.JLabel();
+        txt_descripcionSucursal = new javax.swing.JTextField();
+        lb_idSucursal = new javax.swing.JLabel();
+        txt_idSucursal = new javax.swing.JTextField();
+        btn_aceptarSucursal = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 797, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 443, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jpanel_container.setBackground(new java.awt.Color(255, 255, 255));
+        jpanel_container.setLayout(null);
+
+        jp_header.setBackground(new java.awt.Color(34, 40, 49));
+        jp_header.setLayout(null);
+
+        lb_iconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
+        jp_header.add(lb_iconUser);
+        lb_iconUser.setBounds(840, 5, 48, 48);
+
+        lb_user.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lb_user.setForeground(new java.awt.Color(255, 255, 255));
+        lb_user.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_user.setText("Adminstrador");
+        jp_header.add(lb_user);
+        lb_user.setBounds(10, 20, 820, 30);
+
+        jpanel_container.add(jp_header);
+        jp_header.setBounds(0, 0, 930, 60);
+
+        lb_contraseniaSucursal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_contraseniaSucursal.setText("Contraseña");
+        jpanel_container.add(lb_contraseniaSucursal);
+        lb_contraseniaSucursal.setBounds(510, 280, 170, 20);
+
+        txt_contraseniaSucursal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_contraseniaSucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_contraseniaSucursal);
+        txt_contraseniaSucursal.setBounds(510, 300, 200, 30);
+
+        lb_usuarioSucursal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_usuarioSucursal.setText("Usuario");
+        jpanel_container.add(lb_usuarioSucursal);
+        lb_usuarioSucursal.setBounds(510, 210, 170, 20);
+
+        txt_usuarioSucursal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_usuarioSucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_usuarioSucursal);
+        txt_usuarioSucursal.setBounds(510, 230, 200, 30);
+
+        lb_telefonoSucursal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_telefonoSucursal.setText("Teléfono");
+        jpanel_container.add(lb_telefonoSucursal);
+        lb_telefonoSucursal.setBounds(510, 140, 170, 20);
+
+        txt_telefonoSucursal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_telefonoSucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_telefonoSucursal);
+        txt_telefonoSucursal.setBounds(510, 160, 200, 30);
+
+        lb_direccionSucursal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_direccionSucursal.setText("Dirección");
+        jpanel_container.add(lb_direccionSucursal);
+        lb_direccionSucursal.setBounds(220, 280, 170, 20);
+
+        txt_direccionSucursal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_direccionSucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_direccionSucursal);
+        txt_direccionSucursal.setBounds(220, 300, 200, 30);
+
+        lb_descripcionSucursal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_descripcionSucursal.setText("Descripción");
+        jpanel_container.add(lb_descripcionSucursal);
+        lb_descripcionSucursal.setBounds(220, 210, 170, 20);
+
+        txt_descripcionSucursal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_descripcionSucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_descripcionSucursal);
+        txt_descripcionSucursal.setBounds(220, 230, 200, 30);
+
+        lb_idSucursal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_idSucursal.setText("Id Sucursal");
+        jpanel_container.add(lb_idSucursal);
+        lb_idSucursal.setBounds(220, 140, 170, 20);
+
+        txt_idSucursal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_idSucursal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanel_container.add(txt_idSucursal);
+        txt_idSucursal.setBounds(220, 160, 200, 30);
+
+        btn_aceptarSucursal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/btn_aceptar.png"))); // NOI18N
+        btn_aceptarSucursal.setBorder(null);
+        btn_aceptarSucursal.setBorderPainted(false);
+        btn_aceptarSucursal.setContentAreaFilled(false);
+        jpanel_container.add(btn_aceptarSucursal);
+        btn_aceptarSucursal.setBounds(370, 390, 190, 40);
+
+        getContentPane().add(jpanel_container);
+        jpanel_container.setBounds(0, 0, 930, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +182,22 @@ public class NuevaSucursalView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_aceptarSucursal;
+    private javax.swing.JPanel jp_header;
+    private javax.swing.JPanel jpanel_container;
+    private javax.swing.JLabel lb_contraseniaSucursal;
+    private javax.swing.JLabel lb_descripcionSucursal;
+    private javax.swing.JLabel lb_direccionSucursal;
+    private javax.swing.JLabel lb_iconUser;
+    private javax.swing.JLabel lb_idSucursal;
+    private javax.swing.JLabel lb_telefonoSucursal;
+    public javax.swing.JLabel lb_user;
+    private javax.swing.JLabel lb_usuarioSucursal;
+    public javax.swing.JTextField txt_contraseniaSucursal;
+    public javax.swing.JTextField txt_descripcionSucursal;
+    public javax.swing.JTextField txt_direccionSucursal;
+    public javax.swing.JTextField txt_idSucursal;
+    public javax.swing.JTextField txt_telefonoSucursal;
+    public javax.swing.JTextField txt_usuarioSucursal;
     // End of variables declaration//GEN-END:variables
 }

@@ -67,7 +67,7 @@ public class LoginCtrl implements ActionListener{
 
         //se hace la consulta a la base de datos
         if (sqladmin.consultarCredencialesAdministrador(admin) && sqlsucursal.consultarCredencialesSucursal(sucursal)) {
-
+            
             if (admin.getNombre() != null) {
                 //el usuario ADMIN existe
                 loginAdmin(user, passwd);
@@ -79,7 +79,7 @@ public class LoginCtrl implements ActionListener{
                 JOptionPane.showMessageDialog(null, "El usuarion no existe", "ATENCIÓN", JOptionPane.OK_CANCEL_OPTION);
                 limpiarTxtPasswd();
             }
-
+                        
         } else {
             //no se pudo hacer la consulta
             JOptionPane.showMessageDialog(null, "Hubo un error en la consulta", "ERROR", JOptionPane.ERROR_MESSAGE);

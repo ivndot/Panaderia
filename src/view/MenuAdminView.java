@@ -306,7 +306,7 @@ public class MenuAdminView extends javax.swing.JFrame {
         jp_sucursal.add(lb_nuevaSucursal);
         lb_nuevaSucursal.setBounds(130, 110, 150, 30);
 
-        jtable_sucursal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jtable_sucursal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jtable_sucursal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -329,9 +329,13 @@ public class MenuAdminView extends javax.swing.JFrame {
         jLabel2.setBounds(530, 135, 260, 3);
 
         txt_buscarSucursal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_buscarSucursal.setText("Buscar...");
         txt_buscarSucursal.setToolTipText("");
         txt_buscarSucursal.setBorder(null);
+        txt_buscarSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_buscarSucursalActionPerformed(evt);
+            }
+        });
         jp_sucursal.add(txt_buscarSucursal);
         txt_buscarSucursal.setBounds(540, 105, 240, 30);
 
@@ -365,6 +369,8 @@ public class MenuAdminView extends javax.swing.JFrame {
         lb_nuevoEmpleado.setText("Nuevo empleado");
         jp_empleado.add(lb_nuevoEmpleado);
         lb_nuevoEmpleado.setBounds(130, 110, 260, 30);
+
+        jscroll_empleado.setBackground(new java.awt.Color(255, 255, 255));
 
         jtable_sucursal1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jtable_sucursal1.setModel(new javax.swing.table.DefaultTableModel(
@@ -506,6 +512,10 @@ public class MenuAdminView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_buscarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscarSucursalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_buscarSucursalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -547,12 +557,12 @@ public class MenuAdminView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscarEmpleado;
     private javax.swing.JButton btn_buscarEmpleadoSalario;
-    private javax.swing.JButton btn_buscarSucursal;
+    public javax.swing.JButton btn_buscarSucursal;
     public javax.swing.JButton btn_empleado;
     private javax.swing.JButton btn_generarReporteMensual;
     public javax.swing.JButton btn_home;
     public javax.swing.JButton btn_logout;
-    private javax.swing.JButton btn_nuevaSucursal;
+    public javax.swing.JButton btn_nuevaSucursal;
     private javax.swing.JButton btn_nuevoEmpleado;
     public javax.swing.JButton btn_salario;
     public javax.swing.JButton btn_sucursal;
@@ -588,7 +598,7 @@ public class MenuAdminView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jscroll_salario;
     private javax.swing.JScrollPane jscroll_sucursal;
     private javax.swing.JScrollPane jscroll_ventas;
-    private javax.swing.JTable jtable_sucursal;
+    public javax.swing.JTable jtable_sucursal;
     private javax.swing.JTable jtable_sucursal1;
     private javax.swing.JTable jtable_sucursal2;
     private javax.swing.JTable jtable_sucursal3;
@@ -608,6 +618,6 @@ public class MenuAdminView extends javax.swing.JFrame {
     public rojerusan.RSPanelsSlider panelSlider;
     private javax.swing.JTextField txt_buscarEmpleado;
     private javax.swing.JTextField txt_buscarEmpleadoSalario;
-    private javax.swing.JTextField txt_buscarSucursal;
+    public javax.swing.JTextField txt_buscarSucursal;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS administrador;
 
 CREATE TABLE administrador(
 
-    id_admin VARCHAR(10) PRIMARY KEY,
+    id_admin VARCHAR(10) PRIMARY KEY, -- 4 digitos
     nombre VARCHAR(20) NOT NULL,
     ape_pat VARCHAR(20) NOT NULL,
     ape_mat VARCHAR(20) NOT NULL,
@@ -16,20 +16,20 @@ CREATE TABLE administrador(
 
 );
 
-INSERT INTO administrador VALUES ('12345','JORGE ARTURO','GIMENEZ','GARCÍA','admin','admin');
+INSERT INTO administrador VALUES ('1234','JORGE ARTURO','GIMENEZ','GARCÍA','admin','admin');
 
 DROP TABLE IF EXISTS sucursal;
 
 CREATE TABLE sucursal(
 
-    id_sucursal VARCHAR(10) PRIMARY KEY,
+    id_sucursal VARCHAR(10) PRIMARY KEY, -- 4 digitos
     descripcion VARCHAR(20) NOT NULL,
     direccion VARCHAR(20) NOT NULL,
-    telefono VARCHAR(20) NOT NULL,
+    telefono VARCHAR(20) NOT NULL, -- 10 digitos
     usuario VARCHAR(20) NOT NULL,
     contrasenia VARCHAR(20) NOT NULL
 
 );
 
-INSERT INTO sucursal VALUES ('A1234','NORTE','CENTRAL DEL NORTE','5512345678','norte','123');
+INSERT INTO sucursal VALUES ('A123','NORTE','CENTRAL DEL NORTE','5512345678','norte','123');
 INSERT INTO sucursal VALUES ('A456','SUR','CENTRAL DEL SUR','5512345678','sur','456');

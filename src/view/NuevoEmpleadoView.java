@@ -76,7 +76,7 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
         lb_sucursalEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lb_sucursalEmpleado.setText("Sucursal donde labora");
         jpanel_container.add(lb_sucursalEmpleado);
-        lb_sucursalEmpleado.setBounds(520, 250, 170, 20);
+        lb_sucursalEmpleado.setBounds(520, 250, 230, 20);
 
         cbox_sucursalEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal", "Item 2", "Item 3", "Item 4" }));
         jpanel_container.add(cbox_sucursalEmpleado);

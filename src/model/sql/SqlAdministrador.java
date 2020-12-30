@@ -36,7 +36,7 @@ public class SqlAdministrador extends Conexion {
 
             //iteramos por los resultados
             if(rs.next()){
-                
+
                 //Mandamos lo resultados al POJO
                 admin.setUsuario(rs.getString("usuario"));
                 admin.setContrasenia(rs.getString("contrasenia"));
