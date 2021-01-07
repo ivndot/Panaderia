@@ -25,12 +25,12 @@ public class NuevaSucursalCtrl implements ActionListener {
     private SqlSucursal sqlsucursal = new SqlSucursal();
     private Sucursal sucursal = new Sucursal();
     private Sucursal editSucursal;
-    private MenuAdminCtrl menuadminview;
+    private MenuAdminCtrl menuadminctrl;
 
     //constructor para insertar un nuevo registro
-    public NuevaSucursalCtrl(NuevaSucursalView view, MenuAdminCtrl menuadminview) {
+    public NuevaSucursalCtrl(NuevaSucursalView view, MenuAdminCtrl menuadminctrl) {
         this.view = view;
-        this.menuadminview = menuadminview;
+        this.menuadminctrl = menuadminctrl;
 
         //objetos de la vista
         view.btn_aceptarSucursal.addActionListener(this);
@@ -40,9 +40,9 @@ public class NuevaSucursalCtrl implements ActionListener {
     }
 
     //constructor para editar o actualizar un registro existente
-    public NuevaSucursalCtrl(NuevaSucursalView view, MenuAdminCtrl menuadminview, Sucursal editSucursal) {
+    public NuevaSucursalCtrl(NuevaSucursalView view, MenuAdminCtrl menuadminctrl, Sucursal editSucursal) {
         this.view = view;
-        this.menuadminview = menuadminview;
+        this.menuadminctrl = menuadminctrl;
         this.editSucursal = editSucursal;
 
         //se muestran los datos contenidos en el objeto sucursal
@@ -121,7 +121,7 @@ public class NuevaSucursalCtrl implements ActionListener {
                         JOptionPane.showMessageDialog(null, "Se registró correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                         limpiarTextFields();
                         //se hace la consulta despues de insertar el nuevo registro
-                        menuadminview.consultarSucursal(menuadminview.tablaSucursal());
+                        menuadminctrl.consultarSucursal(menuadminctrl.tablaSucursal());
                         view.setVisible(false);
                         view.dispose();
                     } else {
@@ -162,7 +162,7 @@ public class NuevaSucursalCtrl implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Se actualizó correctamente la información", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                     limpiarTextFields();
                     //se hace la consulta despues de editar el registro
-                    menuadminview.consultarSucursal(menuadminview.tablaSucursal());
+                    menuadminctrl.consultarSucursal(menuadminctrl.tablaSucursal());
                     view.setVisible(false);
                     view.dispose();
                 } else {

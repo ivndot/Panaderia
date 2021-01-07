@@ -34,6 +34,8 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
         jp_header = new javax.swing.JPanel();
         lb_iconUser = new javax.swing.JLabel();
         lb_user = new javax.swing.JLabel();
+        lb_rolEmpleado = new javax.swing.JLabel();
+        cbox_rolEmpleado = new javax.swing.JComboBox<>();
         lb_sucursalEmpleado = new javax.swing.JLabel();
         cbox_sucursalEmpleado = new javax.swing.JComboBox<>();
         lb_telefonoEmpleado = new javax.swing.JLabel();
@@ -73,12 +75,20 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
         jpanel_container.add(jp_header);
         jp_header.setBounds(0, 0, 930, 60);
 
+        lb_rolEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_rolEmpleado.setText("Rol");
+        jpanel_container.add(lb_rolEmpleado);
+        lb_rolEmpleado.setBounds(520, 320, 230, 20);
+
+        cbox_rolEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PANADERO", "REPARTIDOR", "CAJERO" }));
+        jpanel_container.add(cbox_rolEmpleado);
+        cbox_rolEmpleado.setBounds(520, 340, 200, 30);
+
         lb_sucursalEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lb_sucursalEmpleado.setText("Sucursal donde labora");
         jpanel_container.add(lb_sucursalEmpleado);
         lb_sucursalEmpleado.setBounds(520, 250, 230, 20);
 
-        cbox_sucursalEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal", "Item 2", "Item 3", "Item 4" }));
         jpanel_container.add(cbox_sucursalEmpleado);
         cbox_sucursalEmpleado.setBounds(520, 270, 200, 30);
 
@@ -193,8 +203,9 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_enviar;
-    private javax.swing.JComboBox<String> cbox_sucursalEmpleado;
+    public javax.swing.JButton btn_enviar;
+    public javax.swing.JComboBox<String> cbox_rolEmpleado;
+    public javax.swing.JComboBox<String> cbox_sucursalEmpleado;
     private javax.swing.JPanel jp_header;
     private javax.swing.JPanel jpanel_container;
     private javax.swing.JLabel lb_apeMatEmpleado;
@@ -203,14 +214,15 @@ public class NuevoEmpleadoView extends javax.swing.JFrame {
     private javax.swing.JLabel lb_iconUser;
     private javax.swing.JLabel lb_id;
     private javax.swing.JLabel lb_nombreEmpleado;
+    private javax.swing.JLabel lb_rolEmpleado;
     private javax.swing.JLabel lb_sucursalEmpleado;
     private javax.swing.JLabel lb_telefonoEmpleado;
-    private javax.swing.JLabel lb_user;
-    private javax.swing.JTextField txt_apeMatEmpleado;
-    private javax.swing.JTextField txt_apePatEmpleado;
-    private javax.swing.JTextField txt_direccionEmpleado;
-    private javax.swing.JTextField txt_idEmpleado;
-    private javax.swing.JTextField txt_nombreEmpleado;
-    private javax.swing.JTextField txt_telefonoEmpleado;
+    public javax.swing.JLabel lb_user;
+    public javax.swing.JTextField txt_apeMatEmpleado;
+    public javax.swing.JTextField txt_apePatEmpleado;
+    public javax.swing.JTextField txt_direccionEmpleado;
+    public javax.swing.JTextField txt_idEmpleado;
+    public javax.swing.JTextField txt_nombreEmpleado;
+    public javax.swing.JTextField txt_telefonoEmpleado;
     // End of variables declaration//GEN-END:variables
 }

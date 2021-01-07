@@ -77,7 +77,7 @@ public class MenuAdminView extends javax.swing.JFrame {
         btn_nuevoEmpleado = new javax.swing.JButton();
         lb_nuevoEmpleado = new javax.swing.JLabel();
         jscroll_empleado = new javax.swing.JScrollPane();
-        jtable_sucursal1 = new javax.swing.JTable();
+        jtable_empleado = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         txt_buscarEmpleado = new javax.swing.JTextField();
         btn_buscarEmpleado = new javax.swing.JButton();
@@ -372,8 +372,8 @@ public class MenuAdminView extends javax.swing.JFrame {
 
         jscroll_empleado.setBackground(new java.awt.Color(255, 255, 255));
 
-        jtable_sucursal1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jtable_sucursal1.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_empleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jtable_empleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -384,10 +384,10 @@ public class MenuAdminView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jscroll_empleado.setViewportView(jtable_sucursal1);
+        jscroll_empleado.setViewportView(jtable_empleado);
 
         jp_empleado.add(jscroll_empleado);
-        jscroll_empleado.setBounds(50, 240, 840, 140);
+        jscroll_empleado.setBounds(20, 240, 890, 140);
 
         jLabel4.setBackground(new java.awt.Color(102, 102, 102));
         jLabel4.setOpaque(true);
@@ -395,7 +395,6 @@ public class MenuAdminView extends javax.swing.JFrame {
         jLabel4.setBounds(530, 135, 260, 3);
 
         txt_buscarEmpleado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_buscarEmpleado.setText("Buscar...");
         txt_buscarEmpleado.setToolTipText("");
         txt_buscarEmpleado.setBorder(null);
         jp_empleado.add(txt_buscarEmpleado);
@@ -555,7 +554,7 @@ public class MenuAdminView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_buscarEmpleado;
+    public javax.swing.JButton btn_buscarEmpleado;
     private javax.swing.JButton btn_buscarEmpleadoSalario;
     public javax.swing.JButton btn_buscarSucursal;
     public javax.swing.JButton btn_empleado;
@@ -563,7 +562,7 @@ public class MenuAdminView extends javax.swing.JFrame {
     public javax.swing.JButton btn_home;
     public javax.swing.JButton btn_logout;
     public javax.swing.JButton btn_nuevaSucursal;
-    private javax.swing.JButton btn_nuevoEmpleado;
+    public javax.swing.JButton btn_nuevoEmpleado;
     public javax.swing.JButton btn_salario;
     public javax.swing.JButton btn_sucursal;
     public javax.swing.JButton btn_ventas;
@@ -598,8 +597,8 @@ public class MenuAdminView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jscroll_salario;
     private javax.swing.JScrollPane jscroll_sucursal;
     private javax.swing.JScrollPane jscroll_ventas;
+    public javax.swing.JTable jtable_empleado;
     public javax.swing.JTable jtable_sucursal;
-    private javax.swing.JTable jtable_sucursal1;
     private javax.swing.JTable jtable_sucursal2;
     private javax.swing.JTable jtable_sucursal3;
     private javax.swing.JLabel lb_bienvenido;
@@ -616,7 +615,7 @@ public class MenuAdminView extends javax.swing.JFrame {
     public javax.swing.JLabel lb_userHome;
     private javax.swing.JLabel lb_ventas;
     public rojerusan.RSPanelsSlider panelSlider;
-    private javax.swing.JTextField txt_buscarEmpleado;
+    public javax.swing.JTextField txt_buscarEmpleado;
     private javax.swing.JTextField txt_buscarEmpleadoSalario;
     public javax.swing.JTextField txt_buscarSucursal;
     // End of variables declaration//GEN-END:variables
