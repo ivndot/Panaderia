@@ -73,7 +73,7 @@ public class SqlEmpleado extends Conexion {
             //Se prepara la sentencia
             ps = con.prepareStatement(sql);
             //Se obtienen los datos desde el POJO
-            ps.setString(1, empleado.getId_empleado());
+            ps.setInt(1, empleado.getId_empleado());
             ps.setString(2, empleado.getNombre());
             ps.setString(3, empleado.getApe_pat());
             ps.setString(4, empleado.getApe_mat());
@@ -116,7 +116,7 @@ public class SqlEmpleado extends Conexion {
                 //creamos un objeto empleado
                 Empleado empleado = new Empleado();
                 //se envian datos al POJO
-                empleado.setId_empleado(rs.getString("id_empleado"));
+                empleado.setId_empleado(rs.getInt("id_empleado"));
                 empleado.setNombre(rs.getString("nombre"));
                 empleado.setApe_pat(rs.getString("ape_pat"));
                 empleado.setApe_mat(rs.getString("ape_mat"));
@@ -157,7 +157,7 @@ public class SqlEmpleado extends Conexion {
             //Se prepara la sentencia
             ps = con.prepareStatement(sql);
             //Se obtiene el id del POJO
-            ps.setString(1, empleado.getId_empleado());
+            ps.setInt(1, empleado.getId_empleado());
             //Se ejecuta el query
             ps.execute();
 
@@ -188,13 +188,13 @@ public class SqlEmpleado extends Conexion {
             //se prepara la sentencia
             ps = con.prepareStatement(sql);
             // se envia el id del empleado que estamos buscando
-            ps.setString(1, empleado.getId_empleado());
+            ps.setInt(1, empleado.getId_empleado());
             //se ejecuta el query
             rs = ps.executeQuery();
 
             if (rs.next()) {
                 //se encontro un registro
-                nuevoEmpleado.setId_empleado(rs.getString("id_empleado"));
+                nuevoEmpleado.setId_empleado(rs.getInt("id_empleado"));
                 nuevoEmpleado.setNombre(rs.getString("nombre"));
                 nuevoEmpleado.setApe_pat(rs.getString("ape_pat"));
                 nuevoEmpleado.setApe_mat(rs.getString("ape_mat"));
@@ -232,14 +232,14 @@ public class SqlEmpleado extends Conexion {
             //Se prepara la sentencia
             ps = con.prepareStatement(sql);
             //Se obtiene el id del POJO
-            ps.setString(1, empleado.getId_empleado());
+            ps.setInt(1, empleado.getId_empleado());
             //Se ejecuta el query
             rs = ps.executeQuery();
 
             if (rs.next()) {
                 //se obtuvo un registro 
                 //se manda la informacion al POJO
-                empleado.setId_empleado(rs.getString("id_empleado"));
+                empleado.setId_empleado(rs.getInt("id_empleado"));
                 empleado.setNombre(rs.getString("nombre"));
                 empleado.setApe_pat(rs.getString("ape_pat"));
                 empleado.setApe_mat(rs.getString("ape_mat"));
@@ -281,7 +281,7 @@ public class SqlEmpleado extends Conexion {
             ps.setString(5, empleado.getTelefono());
             ps.setString(6, empleado.getRol());
             ps.setString(7, empleado.getSucursal());
-            ps.setString(8, empleado.getId_empleado());
+            ps.setInt(8, empleado.getId_empleado());
             
             //Se ejecuta el query
             ps.execute();

@@ -46,6 +46,8 @@ public class NuevoEmpleadoCtrl implements ActionListener {
 
         llenarComboBoxSucursal();
 
+        //se oculta el txt del id del empleado
+        view.txt_idEmpleado.setVisible(false);
     }
 
     //constructor para editar un registro que ya existe
@@ -61,7 +63,7 @@ public class NuevoEmpleadoCtrl implements ActionListener {
         view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         llenarComboBoxSucursal();
-        
+
         //se llenan los campos con la informacion que se obtuvo
         mostrarDatosEmpleado();
 
@@ -92,7 +94,7 @@ public class NuevoEmpleadoCtrl implements ActionListener {
     }
 
     private boolean verificarTextFields() {
-        if (!view.txt_idEmpleado.getText().isEmpty() && !view.txt_nombreEmpleado.getText().isEmpty() && !view.txt_apePatEmpleado.getText().isEmpty()
+        if (!view.txt_nombreEmpleado.getText().isEmpty() && !view.txt_apePatEmpleado.getText().isEmpty()
                 && !view.txt_apeMatEmpleado.getText().isEmpty() && !view.txt_direccionEmpleado.getText().isEmpty() && !view.txt_telefonoEmpleado.getText().isEmpty()) {
             return true;
         } else {
@@ -102,93 +104,81 @@ public class NuevoEmpleadoCtrl implements ActionListener {
     }
 
     private void insertarEmpleado() {
-        //id debe tener 4 caracteres de longitud
-        if (view.txt_idEmpleado.getText().length() == 4) {
 
-            //el numero de telefono solo debe contener numeros
-            if (telefonoesInt(view.txt_telefonoEmpleado.getText())) {
+        //el numero de telefono solo debe contener numeros
+        if (telefonoesInt(view.txt_telefonoEmpleado.getText())) {
 
-                //el numero de telefono debe tener 10 caracteres de longitud
-                if (view.txt_telefonoEmpleado.getText().length() == 10) {
+            //el numero de telefono debe tener 10 caracteres de longitud
+            if (view.txt_telefonoEmpleado.getText().length() == 10) {
 
-                    //enviamos los datos al POJO del objeto de tipo empleado creado
-                    empleado.setId_empleado(view.txt_idEmpleado.getText());
-                    empleado.setNombre(view.txt_nombreEmpleado.getText().toUpperCase());
-                    empleado.setApe_pat(view.txt_apePatEmpleado.getText().toUpperCase());
-                    empleado.setApe_mat(view.txt_apeMatEmpleado.getText().toUpperCase());
-                    empleado.setDireccion(view.txt_direccionEmpleado.getText().toUpperCase());
-                    empleado.setTelefono(view.txt_telefonoEmpleado.getText());
-                    empleado.setRol((String) view.cbox_rolEmpleado.getSelectedItem());
-                    //se crea una variable para extraer el id de la sucursal
-                    ItemSucursal item = (ItemSucursal) view.cbox_sucursalEmpleado.getSelectedItem();
-                    empleado.setSucursal(item.getId_sucursal());
-                    //se ejecuta el metodo insertar
-                    if (sqlempleado.insertarEmpleado(empleado)) {
-                        JOptionPane.showMessageDialog(null, "Se registró correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-                        limpiarTextFields();
-                        //se hace la consulta despues de insertar el nuevo registro
-                        menuadminctrl.consultarEmpleado(menuadminctrl.tablaEmpleado());
-                        view.setVisible(false);
-                        view.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Hubo un error en el registro, intentalo más tarde", "ATENCIÓN", JOptionPane.ERROR_MESSAGE);
-                    }
-
+                //enviamos los datos al POJO del objeto de tipo empleado creado
+                empleado.setNombre(view.txt_nombreEmpleado.getText().toUpperCase());
+                empleado.setApe_pat(view.txt_apePatEmpleado.getText().toUpperCase());
+                empleado.setApe_mat(view.txt_apeMatEmpleado.getText().toUpperCase());
+                empleado.setDireccion(view.txt_direccionEmpleado.getText().toUpperCase());
+                empleado.setTelefono(view.txt_telefonoEmpleado.getText());
+                empleado.setRol((String) view.cbox_rolEmpleado.getSelectedItem());
+                //se crea una variable para extraer el id de la sucursal
+                ItemSucursal item = (ItemSucursal) view.cbox_sucursalEmpleado.getSelectedItem();
+                empleado.setSucursal(item.getId_sucursal());
+                //se ejecuta el metodo insertar
+                if (sqlempleado.insertarEmpleado(empleado)) {
+                    JOptionPane.showMessageDialog(null, "Se registró correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarTextFields();
+                    //se hace la consulta despues de insertar el nuevo registro
+                    menuadminctrl.consultarEmpleado(menuadminctrl.tablaEmpleado());
+                    view.setVisible(false);
+                    view.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "El número de teléfono debe ser de 10 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Hubo un error en el registro, intentalo más tarde", "ATENCIÓN", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "El número de telefono contiene caracteres que no son permitidos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-            }
 
+            } else {
+                JOptionPane.showMessageDialog(null, "El número de teléfono debe ser de 10 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "El id del empleado debe tener 4 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El número de telefono contiene caracteres que no son permitidos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
+
     }
 
     private void editarEmpleado() {
-        //id debe tener 4 caracteres de longitud
-        if (view.txt_idEmpleado.getText().length() == 4) {
 
-            //el numero de telefono solo debe contener numeros
-            if (telefonoesInt(view.txt_telefonoEmpleado.getText())) {
+        //el numero de telefono solo debe contener numeros
+        if (telefonoesInt(view.txt_telefonoEmpleado.getText())) {
 
-                //el numero de telefono debe tener 10 caracteres de longitud
-                if (view.txt_telefonoEmpleado.getText().length() == 10) {
+            //el numero de telefono debe tener 10 caracteres de longitud
+            if (view.txt_telefonoEmpleado.getText().length() == 10) {
 
-                    //enviamos los datos al POJO del objeto de tipo empleado creado
-                    editEmpleado.setId_empleado(view.txt_idEmpleado.getText());
-                    editEmpleado.setNombre(view.txt_nombreEmpleado.getText().toUpperCase());
-                    editEmpleado.setApe_pat(view.txt_apePatEmpleado.getText().toUpperCase());
-                    editEmpleado.setApe_mat(view.txt_apeMatEmpleado.getText().toUpperCase());
-                    editEmpleado.setDireccion(view.txt_direccionEmpleado.getText().toUpperCase());
-                    editEmpleado.setTelefono(view.txt_telefonoEmpleado.getText());
-                    editEmpleado.setRol((String) view.cbox_rolEmpleado.getSelectedItem());
-                    //se crea una variable para extraer el id de la sucursal
-                    ItemSucursal item = (ItemSucursal) view.cbox_sucursalEmpleado.getSelectedItem();
-                    editEmpleado.setSucursal(item.getId_sucursal());
-                    //se ejecuta el metodo insertar
-                    if (sqlempleado.editarEmpleado(editEmpleado)) {
-                        JOptionPane.showMessageDialog(null, "Se actualizó correctamente la información", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-                        limpiarTextFields();
-                        //se hace la consulta despues de editar el nuevo registro
-                        menuadminctrl.consultarEmpleado(menuadminctrl.tablaEmpleado());
-                        view.setVisible(false);
-                        view.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Hubo un error en la actualización, intentalo más tarde", "ATENCIÓN", JOptionPane.ERROR_MESSAGE);
-                    }
-
+                //enviamos los datos al POJO del objeto de tipo empleado creado
+                editEmpleado.setNombre(view.txt_nombreEmpleado.getText().toUpperCase());
+                editEmpleado.setApe_pat(view.txt_apePatEmpleado.getText().toUpperCase());
+                editEmpleado.setApe_mat(view.txt_apeMatEmpleado.getText().toUpperCase());
+                editEmpleado.setDireccion(view.txt_direccionEmpleado.getText().toUpperCase());
+                editEmpleado.setTelefono(view.txt_telefonoEmpleado.getText());
+                editEmpleado.setRol((String) view.cbox_rolEmpleado.getSelectedItem());
+                //se crea una variable para extraer el id de la sucursal
+                ItemSucursal item = (ItemSucursal) view.cbox_sucursalEmpleado.getSelectedItem();
+                editEmpleado.setSucursal(item.getId_sucursal());
+                //se ejecuta el metodo insertar
+                if (sqlempleado.editarEmpleado(editEmpleado)) {
+                    JOptionPane.showMessageDialog(null, "Se actualizó correctamente la información", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarTextFields();
+                    //se hace la consulta despues de editar el nuevo registro
+                    menuadminctrl.consultarEmpleado(menuadminctrl.tablaEmpleado());
+                    view.setVisible(false);
+                    view.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "El número de teléfono debe ser de 10 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Hubo un error en la actualización, intentalo más tarde", "ATENCIÓN", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "El número de telefono contiene caracteres que no son permitidos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-            }
 
+            } else {
+                JOptionPane.showMessageDialog(null, "El número de teléfono debe ser de 10 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "El id del empleado debe tener 4 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El número de telefono contiene caracteres que no son permitidos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
+
     }
 
     private void limpiarTextFields() {
@@ -229,9 +219,9 @@ public class NuevoEmpleadoCtrl implements ActionListener {
         view.cbox_sucursalEmpleado.setRenderer(new ItemRenderer());
 
     }
-    
-    private void mostrarDatosEmpleado(){
-        view.txt_idEmpleado.setText(editEmpleado.getId_empleado());
+
+    private void mostrarDatosEmpleado() {
+        view.txt_idEmpleado.setText(String.valueOf(editEmpleado.getId_empleado()));
         view.txt_idEmpleado.setEnabled(false);
         view.txt_nombreEmpleado.setText(editEmpleado.getNombre());
         view.txt_apePatEmpleado.setText(editEmpleado.getApe_pat());

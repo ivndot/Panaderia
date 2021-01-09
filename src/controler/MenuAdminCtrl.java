@@ -222,7 +222,7 @@ public class MenuAdminCtrl implements ActionListener {
                     JTable table = (JTable) e.getSource();
                     int row = table.getSelectedRow();
                     //se obtiene el id de la sucursal
-                    String idSucursal = (String) table.getModel().getValueAt(row, 0);
+                    int idSucursal = (int) table.getModel().getValueAt(row, 0);
 
                     //se crea un objeto de tipo sucursal
                     Sucursal sucursal = new Sucursal();
@@ -254,7 +254,7 @@ public class MenuAdminCtrl implements ActionListener {
                 JTable table = (JTable) e.getSource();
                 int row = table.getSelectedRow();
                 //se obtiene el id de la sucursal
-                String idSucursal = (String) table.getModel().getValueAt(row, 0);
+                int idSucursal = (int) table.getModel().getValueAt(row, 0);
 
                 //se crea un objeto de tipo sucursal
                 Sucursal sucursal = new Sucursal();
@@ -287,7 +287,7 @@ public class MenuAdminCtrl implements ActionListener {
             //creamos un objeto de tipo sucursal y le enviamos 
             Sucursal sucursal = new Sucursal();
             Sucursal nuevaSucursal = new Sucursal();
-            sucursal.setId_sucursal(view.txt_buscarSucursal.getText());
+            sucursal.setId_sucursal(Integer.parseInt(view.txt_buscarSucursal.getText()));
             //se ejecuta el metodo de busqueda y se iguala al objeto anteriormente hecho
             nuevaSucursal = sqlsucursal.consultarRegistroSucursal(sucursal);
             //si es null no se encontro ningun registro con ese id
@@ -337,9 +337,9 @@ public class MenuAdminCtrl implements ActionListener {
             empleadoview.lb_user.setText(view.lb_user.getText());
             empleadoview.setVisible(true);
         }
-        
+
         //buscar un empleado
-        if(e.getSource() == view.btn_buscarEmpleado){
+        if (e.getSource() == view.btn_buscarEmpleado) {
             buscarEmpleado(tablaEmpleado());
         }
 
@@ -420,7 +420,7 @@ public class MenuAdminCtrl implements ActionListener {
                     JTable table = (JTable) e.getSource();
                     int row = table.getSelectedRow();
                     //se obtiene el id del empleado
-                    String idEmpleado = (String) table.getModel().getValueAt(row, 0);
+                    int idEmpleado = (int) table.getModel().getValueAt(row, 0);
 
                     //se crea un objeto de tipo Empleado
                     Empleado empleado = new Empleado();
@@ -452,7 +452,7 @@ public class MenuAdminCtrl implements ActionListener {
                 JTable table = (JTable) e.getSource();
                 int row = table.getSelectedRow();
                 //se obtiene el id del empleado
-                String idEmpleado = (String) table.getModel().getValueAt(row, 0);
+                int idEmpleado = (int) table.getModel().getValueAt(row, 0);
 
                 //se crea un objeto de tipo empleado
                 Empleado empleado = new Empleado();
@@ -477,7 +477,7 @@ public class MenuAdminCtrl implements ActionListener {
         };
         return update;
     }
-    
+
     private void buscarEmpleado(DefaultTableModel table) {
         //el campo txt de buscar esta vacio 
         if (!view.txt_buscarEmpleado.getText().isEmpty() && view.txt_buscarEmpleado.getText() != null) {
@@ -485,7 +485,7 @@ public class MenuAdminCtrl implements ActionListener {
             //creamos un objeto de tipo empleado y le enviamos 
             Empleado empleado = new Empleado();
             Empleado nuevoEmpleado = new Empleado();
-            empleado.setId_empleado(view.txt_buscarEmpleado.getText());
+            empleado.setId_empleado(Integer.parseInt(view.txt_buscarEmpleado.getText()));
             //se ejecuta el metodo de busqueda y se iguala al objeto anteriormente hecho
             nuevoEmpleado = sqlempleado.consultarRegistroEmpleado(empleado);
             //si es null no se encontro ningun registro con ese id

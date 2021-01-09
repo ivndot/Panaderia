@@ -11,7 +11,7 @@ package model;
  */
 public class Empleado {
     
-    private String id_empleado;
+    private int id_empleado;
     private String nombre;
     private String ape_pat;
     private String ape_mat;
@@ -20,11 +20,11 @@ public class Empleado {
     private String rol;
     private String sucursal;
 
-    public String getId_empleado() {
+    public int getId_empleado() {
         return id_empleado;
     }
 
-    public void setId_empleado(String id_empleado) {
+    public void setId_empleado(int id_empleado) {
         this.id_empleado = id_empleado;
     }
 

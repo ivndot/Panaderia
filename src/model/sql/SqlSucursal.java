@@ -72,7 +72,7 @@ public class SqlSucursal extends Conexion {
             //Se prepara la sentencia
             ps = con.prepareStatement(sql);
             //Se obtienen los datos desde el POJO
-            ps.setString(1, sucursal.getId_sucursal());
+            ps.setInt(1, sucursal.getId_sucursal());
             ps.setString(2, sucursal.getDescripcion());
             ps.setString(3, sucursal.getDireccion());
             ps.setString(4, sucursal.getTelefono());
@@ -113,7 +113,7 @@ public class SqlSucursal extends Conexion {
                 //creamos un objeto sucursal
                 Sucursal sucursal = new Sucursal();
                 //se envian datos al POJO
-                sucursal.setId_sucursal(rs.getString("id_sucursal"));
+                sucursal.setId_sucursal(rs.getInt("id_sucursal"));
                 sucursal.setDescripcion(rs.getString("descripcion"));
                 sucursal.setDireccion(rs.getString("direccion"));
                 sucursal.setTelefono(rs.getString("telefono"));
@@ -153,14 +153,14 @@ public class SqlSucursal extends Conexion {
             //se prepara la sentencia
             ps = con.prepareStatement(sql);
             // se envia el id de la sucursal que estamos buscando
-            ps.setString(1, sucursal.getId_sucursal());
+            ps.setInt(1, sucursal.getId_sucursal());
             //se ejecuta el query
             rs = ps.executeQuery();
             
             if(rs.next()){
                 //se encontro un registro
                 
-                nuevaSucursal.setId_sucursal(rs.getString("id_sucursal"));
+                nuevaSucursal.setId_sucursal(rs.getInt("id_sucursal"));
                 nuevaSucursal.setDescripcion(rs.getString("descripcion"));
                 nuevaSucursal.setDireccion(rs.getString("direccion"));
                 nuevaSucursal.setTelefono(rs.getString("telefono"));
@@ -195,7 +195,7 @@ public class SqlSucursal extends Conexion {
             //Se prepara la sentencia
             ps = con.prepareStatement(sql);
             //Se obtiene el id del POJO
-            ps.setString(1, sucursal.getId_sucursal());
+            ps.setInt(1, sucursal.getId_sucursal());
             //Se ejecuta el query
             ps.execute();
 
@@ -229,7 +229,7 @@ public class SqlSucursal extends Conexion {
             ps.setString(3, sucursal.getTelefono());
             ps.setString(4, sucursal.getUsuario());
             ps.setString(5, sucursal.getContrasenia());
-            ps.setString(6, sucursal.getId_sucursal());
+            ps.setInt(6, sucursal.getId_sucursal());
             //Se ejecuta el query
             ps.execute();
             return true;
@@ -257,14 +257,14 @@ public class SqlSucursal extends Conexion {
             //Se prepara la sentencia
             ps = con.prepareStatement(sql);
             //Se obtiene el id del POJO
-            ps.setString(1, sucursal.getId_sucursal());
+            ps.setInt(1, sucursal.getId_sucursal());
             //Se ejecuta el query
             rs = ps.executeQuery();
 
             if (rs.next()) {
                 //se obtuvo un registro 
                 //se manda la informacion al POJO
-                sucursal.setId_sucursal(rs.getString("id_sucursal"));
+                sucursal.setId_sucursal(rs.getInt("id_sucursal"));
                 sucursal.setDescripcion(rs.getString("descripcion"));
                 sucursal.setDireccion(rs.getString("direccion"));
                 sucursal.setTelefono(rs.getString("telefono"));

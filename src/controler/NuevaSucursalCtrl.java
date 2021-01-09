@@ -37,6 +37,9 @@ public class NuevaSucursalCtrl implements ActionListener {
 
         //listener que nada mas cierra la ventana actual
         view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+        //hacer invisible al txt del id
+        view.txt_idSucursal.setVisible(false);
     }
 
     //constructor para editar o actualizar un registro existente
@@ -80,7 +83,7 @@ public class NuevaSucursalCtrl implements ActionListener {
     }
 
     private boolean verificarTextFields() {
-        if (!view.txt_idSucursal.getText().isEmpty() && !view.txt_descripcionSucursal.getText().isEmpty() && !view.txt_direccionSucursal.getText().isEmpty()
+        if (!view.txt_descripcionSucursal.getText().isEmpty() && !view.txt_direccionSucursal.getText().isEmpty()
                 && !view.txt_telefonoSucursal.getText().isEmpty() && !view.txt_usuarioSucursal.getText().isEmpty() && !view.txt_contraseniaSucursal.getText().isEmpty()) {
             return true;
         } else {
@@ -99,49 +102,6 @@ public class NuevaSucursalCtrl implements ActionListener {
     }
 
     private void insertarSucursal() {
-        //id debe tener 4 caracteres de longitud
-        if (view.txt_idSucursal.getText().length() == 4) {
-
-            //el numero de telefono solo debe contener numeros
-            if (telefonoesInt(view.txt_telefonoSucursal.getText())) {
-
-                //el numero de telefono debe tener 10 caracteres de longitud
-                if (view.txt_telefonoSucursal.getText().length() == 10) {
-
-                    //enviamos los datos al POJO del objeto de tipo sucursal creado
-                    sucursal.setId_sucursal(view.txt_idSucursal.getText());
-                    sucursal.setDescripcion(view.txt_descripcionSucursal.getText().toUpperCase());
-                    sucursal.setDireccion(view.txt_direccionSucursal.getText().toUpperCase());
-                    sucursal.setTelefono(view.txt_telefonoSucursal.getText());
-                    sucursal.setUsuario(view.txt_usuarioSucursal.getText());
-                    sucursal.setContrasenia(view.txt_contraseniaSucursal.getText());
-
-                    //se ejecuta el metodo insertar
-                    if (sqlsucursal.insertarSucursal(sucursal)) {
-                        JOptionPane.showMessageDialog(null, "Se registró correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-                        limpiarTextFields();
-                        //se hace la consulta despues de insertar el nuevo registro
-                        menuadminctrl.consultarSucursal(menuadminctrl.tablaSucursal());
-                        view.setVisible(false);
-                        view.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Hubo un error en el registro, intentalo más tarde", "ATENCIÓN", JOptionPane.ERROR_MESSAGE);
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "El número de teléfono debe ser de 10 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "El número de telefono contiene caracteres que no son permitidos", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "El id de la sucursal debe tener 4 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-    }
-
-    private void editarSucursal() {
 
         //el numero de telefono solo debe contener numeros
         if (telefonoesInt(view.txt_telefonoSucursal.getText())) {
@@ -150,23 +110,22 @@ public class NuevaSucursalCtrl implements ActionListener {
             if (view.txt_telefonoSucursal.getText().length() == 10) {
 
                 //enviamos los datos al POJO del objeto de tipo sucursal creado
-                sucursal.setId_sucursal(view.txt_idSucursal.getText());
                 sucursal.setDescripcion(view.txt_descripcionSucursal.getText().toUpperCase());
                 sucursal.setDireccion(view.txt_direccionSucursal.getText().toUpperCase());
                 sucursal.setTelefono(view.txt_telefonoSucursal.getText());
                 sucursal.setUsuario(view.txt_usuarioSucursal.getText());
                 sucursal.setContrasenia(view.txt_contraseniaSucursal.getText());
 
-                //se ejecuta el metodo editar
-                if (sqlsucursal.editarSucursal(sucursal)) {
-                    JOptionPane.showMessageDialog(null, "Se actualizó correctamente la información", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                //se ejecuta el metodo insertar
+                if (sqlsucursal.insertarSucursal(sucursal)) {
+                    JOptionPane.showMessageDialog(null, "Se registró correctamente", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
                     limpiarTextFields();
-                    //se hace la consulta despues de editar el registro
+                    //se hace la consulta despues de insertar el nuevo registro
                     menuadminctrl.consultarSucursal(menuadminctrl.tablaSucursal());
                     view.setVisible(false);
                     view.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Hubo un error en la actualización, intentalo más tarde", "ATENCIÓN", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Hubo un error en el registro, intentalo más tarde", "ATENCIÓN", JOptionPane.ERROR_MESSAGE);
                 }
 
             } else {
@@ -178,12 +137,42 @@ public class NuevaSucursalCtrl implements ActionListener {
 
     }
 
+    private void editarSucursal() {
+
+        //el numero de telefono debe tener 10 caracteres de longitud
+        if (view.txt_telefonoSucursal.getText().length() == 10) {
+
+            //enviamos los datos al POJO del objeto de tipo sucursal creado
+            editSucursal.setDescripcion(view.txt_descripcionSucursal.getText().toUpperCase());
+            editSucursal.setDireccion(view.txt_direccionSucursal.getText().toUpperCase());
+            editSucursal.setTelefono(view.txt_telefonoSucursal.getText());
+            editSucursal.setUsuario(view.txt_usuarioSucursal.getText());
+            editSucursal.setContrasenia(view.txt_contraseniaSucursal.getText());
+
+            //se ejecuta el metodo editar
+            if (sqlsucursal.editarSucursal(editSucursal)) {
+                JOptionPane.showMessageDialog(null, "Se actualizó correctamente la información", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+                limpiarTextFields();
+                //se hace la consulta despues de editar el registro
+                menuadminctrl.consultarSucursal(menuadminctrl.tablaSucursal());
+                view.setVisible(false);
+                view.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un error en la actualización, intentalo más tarde", "ATENCIÓN", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El número de teléfono debe ser de 10 caracteres", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }
+
     private void mostrarDatosSucursal() {
         //ponemos en disabled el txt del id ya que no se puede editar
         view.txt_idSucursal.setEnabled(false);
 
         //se vomitan los datos contenidos en editSucursal
-        view.txt_idSucursal.setText(editSucursal.getId_sucursal());
+        view.txt_idSucursal.setText(String.valueOf(editSucursal.getId_sucursal()));
         view.txt_descripcionSucursal.setText(editSucursal.getDescripcion());
         view.txt_direccionSucursal.setText(editSucursal.getDireccion());
         view.txt_telefonoSucursal.setText(editSucursal.getTelefono());
@@ -194,7 +183,7 @@ public class NuevaSucursalCtrl implements ActionListener {
 
     private boolean telefonoesInt(String tel) {
         try {
-            BigInteger bigIntegerStr=new BigInteger(tel);
+            BigInteger bigIntegerStr = new BigInteger(tel);
             return true;
         } catch (Exception e) {
             System.out.println(e);

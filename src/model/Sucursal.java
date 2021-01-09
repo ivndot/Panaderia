@@ -11,18 +11,18 @@ package model;
  */
 public class Sucursal {
     
-    private String id_sucursal;
+    private int id_sucursal;
     private String descripcion;
     private String direccion;
     private String telefono;
     private String usuario;
     private String contrasenia;
 
-    public String getId_sucursal() {
+    public int getId_sucursal() {
         return id_sucursal;
     }
 
-    public void setId_sucursal(String id_sucursal) {
+    public void setId_sucursal(int id_sucursal) {
         this.id_sucursal = id_sucursal;
     }
 
