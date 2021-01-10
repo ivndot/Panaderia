@@ -18,6 +18,7 @@ import javax.swing.Action;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,11 +26,13 @@ import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import model.ControlHoras;
 import model.Empleado;
 import model.ItemMes;
 import model.Sucursal;
 import model.SucursalVentas;
 import model.VentaAdmin;
+import model.sql.SqlControlHoras;
 import model.sql.SqlEmpleado;
 import model.sql.SqlSucursal;
 import model.sql.SqlVenta;
@@ -68,12 +71,17 @@ public class MenuAdminCtrl implements ActionListener {
         view.btn_buscarEmpleado.addActionListener(this);
         //boton ventas
         view.btn_generarReporteMensual.addActionListener(this);
-        //combo box
+        //combo box ventas
         view.cbox_anio.addActionListener(this);
         view.cbox_mes.addActionListener(this);
+        //combo box salario
+        view.cbox_mesSalario.addActionListener(this);
+        view.cbox_anioSalario.addActionListener(this);
 
-        //combobox
-        comboBoxMes();
+        //combobox mes ventas
+        comboBoxMes(view.cbox_mes);
+        //combobox mes salario
+        comboBoxMes(view.cbox_mesSalario);
 
         //tablas
         //sucursal
@@ -81,7 +89,9 @@ public class MenuAdminCtrl implements ActionListener {
         //empleado
         consultarEmpleado(tablaEmpleado());
         //ventas
-        consultarVentasSucursales(tablaVentas(), generarVentasSucursales(sumarVentasSucursal(getMes(), getAnio())));
+        consultarVentasSucursales(tablaVentas(), generarVentasSucursales(sumarVentasSucursal(getMes(view.cbox_mes), getAnio(view.cbox_anio))));
+        //salario
+        consultarSalarioEmpleado(tablaSalario(), generarSalarioEmpleado(sumarSalarioEmpleado(getMes(view.cbox_mesSalario), getAnio(view.cbox_anioSalario))));
     }
 
     @Override
@@ -98,6 +108,9 @@ public class MenuAdminCtrl implements ActionListener {
 
         //todos los botones de la vista ventas
         ventas(e);
+
+        //todos los botones de la vista salario
+        salario(e);
 
         // boton de logout
         if (e.getSource() == view.btn_logout) {
@@ -575,25 +588,19 @@ public class MenuAdminCtrl implements ActionListener {
         //generar reporte de todas las sucursales
         if (e.getSource() == view.btn_generarReporteMensual) {
             ReportesVentas reporteSucursal = new ReportesVentas();
-            reporteSucursal.generarReporteSucursales(getMes(), getAnio());
+            reporteSucursal.generarReporteSucursales(getMes(view.cbox_mes), getAnio(view.cbox_anio));
         }
 
         //cbox año y mes
-        if (e.getSource() == view.cbox_anio) {
+        if (e.getSource() == view.cbox_anio || e.getSource() == view.cbox_mes) {
             //consulta de las ventas
-            consultarVentasSucursales(tablaVentas(), generarVentasSucursales(sumarVentasSucursal(getMes(), getAnio())));
-            System.out.println("entro");
+            consultarVentasSucursales(tablaVentas(), generarVentasSucursales(sumarVentasSucursal(getMes(view.cbox_mes), getAnio(view.cbox_anio))));
+            //System.out.println("entro");
         }
-
-        if (e.getSource() == view.cbox_mes) {
-            //consulta de las ventas
-            consultarVentasSucursales(tablaVentas(), generarVentasSucursales(sumarVentasSucursal(getMes(), getAnio())));
-        }
-
     }
 
     public DefaultTableModel tablaVentas() {
-        //Empleado
+        //Ventas
         DefaultTableModel tablaventas = new DefaultTableModel();
         view.jtable_ventas.setModel(tablaventas);
         tablaventas.addColumn("Id sucursal");
@@ -687,30 +694,117 @@ public class MenuAdminCtrl implements ActionListener {
                 //se obtiene el id de la sucursal
                 int idSucursal = (int) table.getModel().getValueAt(row, 0);
 
-                reporte.generarReporteSucursal(getMes(), getAnio(), idSucursal);
+                reporte.generarReporteSucursal(getMes(view.cbox_mes), getAnio(view.cbox_anio), idSucursal);
             }
         };
         return reporte;
     }
 
-    private void comboBoxMes() {
+    private void comboBoxMes(JComboBox cbox) {
         Vector model = new Vector();
         String meses[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
         for (int i = 0; i < 12; i++) {
             model.addElement(new ItemMes(i + 1, meses[i]));
         }
-        view.cbox_mes.setModel(new DefaultComboBoxModel(model));
-        view.cbox_mes.setRenderer(new ItemRenderer());
-        view.cbox_anio.setSelectedItem("Enero");
+        cbox.setModel(new DefaultComboBoxModel(model));
+        cbox.setRenderer(new ItemRenderer());
+        cbox.setSelectedItem("Enero");
     }
 
-    private int getAnio() {
-        return Integer.parseInt(view.cbox_anio.getSelectedItem().toString());
+    private int getAnio(JComboBox cbox) {
+        return Integer.parseInt(cbox.getSelectedItem().toString());
     }
 
-    private int getMes() {
-        ItemMes mes = (ItemMes) view.cbox_mes.getSelectedItem();
+    private int getMes(JComboBox cbox) {
+        ItemMes mes = (ItemMes) cbox.getSelectedItem();
         return mes.getId_mes();
+    }
+
+    private DefaultTableModel tablaSalario() {
+        //Salario
+        DefaultTableModel tablasalario = new DefaultTableModel();
+        view.jtable_salario.setModel(tablasalario);
+        tablasalario.addColumn("Id Empleado");
+        //tablasalario.addColumn("Empleado");
+        //tablasalario.addColumn("Horas normales");
+        //tablasalario.addColumn("Horas extra");
+        tablasalario.addColumn("Total pago");
+
+        //tamaño de las columnas 
+        //tamanioColumnas(view.jtable_ventas, 32);
+        //tamaño de las filas
+        view.jtable_ventas.setRowHeight(32);
+
+        return tablasalario;
+    }
+
+    private void salario(ActionEvent e) {
+        //combo box mes del salario
+        if (e.getSource() == view.cbox_mesSalario || e.getSource() == view.cbox_anioSalario) {
+            //salario
+            consultarSalarioEmpleado(tablaSalario(), generarSalarioEmpleado(sumarSalarioEmpleado(getMes(view.cbox_mesSalario), getAnio(view.cbox_anioSalario))));
+        }
+    }
+
+    private HashMap<Integer, Float> sumarSalarioEmpleado(int mes, int anio) {
+        SqlControlHoras sqlcontrolhoras = new SqlControlHoras();
+        ArrayList<ControlHoras> salario = sqlcontrolhoras.obtenerControlHoras(mes, anio);
+        //id empleado | salario total
+        HashMap<Integer, Float> hashMap = new HashMap<>();
+
+        //iteracion por el resulset de todas las ventas que se hicieron en el año y mes indicados
+        for (ControlHoras controlHoras : salario) {
+
+            //si el hashmap contiene el id del empleado
+            if (hashMap.containsKey(controlHoras.getId_empleado())) {
+                //ya se tenia al empleado registrado en el hashmap
+                float salario_total = controlHoras.getSalario() + hashMap.get(controlHoras.getId_empleado());
+                //se suma al total el resultado de la venta al valor del hashmap
+                hashMap.replace(controlHoras.getId_empleado(), salario_total);
+            } else {
+                //es la primera vez que se encuentra con ese empleado
+                hashMap.put(controlHoras.getId_empleado(), controlHoras.getSalario());
+            }
+
+        }
+
+        return hashMap;
+    }
+
+    private ArrayList<ControlHoras> generarSalarioEmpleado(HashMap<Integer, Float> hashMap) {
+        //se crea el objeto de tipo VentaAdmin, que es el que se va a mostrar en la tabla
+        ControlHoras controlHoras = null;
+        ArrayList<ControlHoras> controlHorasList = new ArrayList<>();
+        for (int id_empleado : hashMap.keySet()) {
+            controlHoras = new ControlHoras();
+            controlHoras.setId_empleado(id_empleado);
+            controlHoras.setSalario(hashMap.get(id_empleado));
+
+            controlHorasList.add(controlHoras);
+        }
+
+        return controlHorasList;
+    }
+
+    private void consultarSalarioEmpleado(DefaultTableModel table, ArrayList<ControlHoras> controlHoras) {
+        //lista de objetos empleados
+        ArrayList<ControlHoras> controlHorasList = controlHoras;
+
+        //no hay ningun empleado
+        if (controlHoras == null) {
+            JOptionPane.showMessageDialog(null, "Aún no hay salarios", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            //iteramos por todos los objetos
+            for (ControlHoras controlhoras : controlHorasList) {
+                //se crea un arreglo de tipo object en donde se le asigna a cada posicion la informacion de cada empleado
+                Object[] controlHorasObject = new Object[2];
+                controlHorasObject[0] = controlhoras.getId_empleado();
+                controlHorasObject[1] = controlhoras.getSalario();
+
+                //se agrega la fila con la informacion
+                table.addRow(controlHorasObject);
+            }
+        }
     }
 
     // clase que permite hacer un render de los valores key value 

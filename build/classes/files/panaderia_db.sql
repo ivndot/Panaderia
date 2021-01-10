@@ -161,9 +161,52 @@ INSERT INTO ventas_producto VALUES (20,1,3);
 INSERT INTO ventas_producto VALUES (21,2,4);
 INSERT INTO ventas_producto VALUES (22,3,5);
 
+DROP TABLE IF EXISTS control_horas;
+
+CREATE TABLE control_horas(
+    
+    id_controlHoras INT NOT NULL AUTO_INCREMENT,
+    id_empleado INT NOT NULL,
+    fecha DATE NOT NULL,
+    hora_entrada TIME NOT NULL,
+    hora_salida TIME NOT NULL,
+    horas_normales INT NOT NULL,
+    horas_extra INT NOT NULL, 
+    salario FLOAT NOT NULL,
+
+    /*definicion de llaves secundarias*/
+    PRIMARY KEY (id_controlHoras),
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
+
+);
+
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (200,"2020-12-01","2020-12-01 8:00:00","2020-12-01 17:00:00", 8, 0, 200.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (200,"2020-12-02","2020-12-02 8:00:00","2020-12-02 17:00:00", 8, 0, 200.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (200,"2020-12-03","2020-12-03 8:00:00","2020-12-03 17:00:00", 8, 0, 200.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (200,"2021-01-06","2021-01-06 8:00:00","2021-01-06 19:00:00", 8, 2, 300.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (200,"2021-01-07","2021-01-07 8:00:00","2021-01-07 20:00:00", 8, 3, 450.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (200,"2021-01-08","2021-01-08 8:00:00","2021-01-08 20:00:00", 8, 3, 450.00);
+
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (201,"2020-12-07","2020-12-01 8:00:00","2020-12-01 17:00:00", 8, 0, 250.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (201,"2020-12-08","2020-12-08 8:00:00","2020-12-08 17:00:00", 8, 0, 250.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (201,"2020-12-09","2020-12-09 8:00:00","2020-12-09 17:00:00", 8, 0, 250.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (201,"2021-01-07","2021-01-01 8:00:00","2021-01-01 18:00:00", 8, 1, 312.50);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (201,"2021-01-08","2021-01-08 8:00:00","2021-01-08 19:00:00", 8, 2, 375.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (201,"2021-01-09","2021-01-09 8:00:00","2021-01-09 20:00:00", 8, 3, 437.50);
+
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (202,"2020-12-09","2020-12-09 8:00:00","2020-12-01 17:00:00", 8, 0, 190.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (202,"2020-12-09","2020-12-09 8:00:00","2020-12-09 17:00:00", 8, 0, 190.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (202,"2020-12-09","2020-12-09 8:00:00","2020-12-01 17:00:00", 8, 0, 190.00);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (202,"2021-01-09","2021-01-09 8:00:00","2021-01-01 20:00:00", 8, 3, 332.50);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (202,"2021-01-09","2021-01-09 8:00:00","2021-01-09 20:00:00", 8, 3, 332.50);
+INSERT INTO control_horas (id_empleado, fecha, hora_entrada, hora_salida, horas_normales, horas_extra, salario) VALUES (202,"2021-01-09","2021-01-09 8:00:00","2021-01-01 19:00:00", 8, 2, 285.00);
+
 /*
 SELECT sucursal.descripcion, venta.id_venta, venta.id_sucursal, venta.fecha, producto.id_producto, producto.precio, ventas_producto.cantidad 
 FROM sucursal INNER JOIN venta ON sucursal.id_sucursal = venta.id_sucursal
 INNER JOIN ventas_producto ON venta.id_venta = ventas_producto.id_venta 
 INNER JOIN producto ON ventas_producto.id_producto = producto.id_producto WHERE MONTH(venta.fecha) = 1 AND YEAR(venta.fecha) = 2021;
 */
+/*
+SELECT empleado.id_empleado, empleado.nombre, empleado.ape_pat, empleado.ape_mat, control_horas.horas_normales, control_horas.horas_extra, control_horas.salario
+FROM empleado INNER JOIN control_horas ON empleado.id_empleado = control_horas.id_empleado WHERE MONTH(control_horas.fecha) = 1 AND YEAR(control_horas.fecha) = 2020;*/

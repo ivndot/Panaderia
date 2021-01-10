@@ -19,8 +19,6 @@ public class MenuAdminView extends javax.swing.JFrame {
         this.setResizable(false);
         this.setSize(1030, 600);
         this.setLocationRelativeTo(null);
-        //System.out.println("WIDTH: "+this.jp_empleado.getWidth());
-        //System.out.println("HEIGTH: "+this.jp_empleado.getHeight());
     }
 
     /**
@@ -91,11 +89,9 @@ public class MenuAdminView extends javax.swing.JFrame {
         jp_salario = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jscroll_salario = new javax.swing.JScrollPane();
-        jtable_sucursal3 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        txt_buscarEmpleadoSalario = new javax.swing.JTextField();
-        btn_buscarEmpleadoSalario = new javax.swing.JButton();
+        jtable_salario = new javax.swing.JTable();
         cbox_mesSalario = new javax.swing.JComboBox<>();
+        cbox_anioSalario = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -462,8 +458,8 @@ public class MenuAdminView extends javax.swing.JFrame {
         jp_salario.add(jLabel6);
         jLabel6.setBounds(10, 20, 900, 50);
 
-        jtable_sucursal3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jtable_sucursal3.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_salario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jtable_salario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -474,32 +470,17 @@ public class MenuAdminView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jscroll_salario.setViewportView(jtable_sucursal3);
+        jscroll_salario.setViewportView(jtable_salario);
 
         jp_salario.add(jscroll_salario);
         jscroll_salario.setBounds(50, 240, 840, 140);
 
-        jLabel7.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel7.setOpaque(true);
-        jp_salario.add(jLabel7);
-        jLabel7.setBounds(80, 190, 260, 3);
-
-        txt_buscarEmpleadoSalario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_buscarEmpleadoSalario.setToolTipText("");
-        txt_buscarEmpleadoSalario.setBorder(null);
-        jp_salario.add(txt_buscarEmpleadoSalario);
-        txt_buscarEmpleadoSalario.setBounds(90, 160, 240, 30);
-
-        btn_buscarEmpleadoSalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/btn_buscar.png"))); // NOI18N
-        btn_buscarEmpleadoSalario.setBorder(null);
-        btn_buscarEmpleadoSalario.setBorderPainted(false);
-        btn_buscarEmpleadoSalario.setContentAreaFilled(false);
-        jp_salario.add(btn_buscarEmpleadoSalario);
-        btn_buscarEmpleadoSalario.setBounds(350, 165, 80, 32);
-
-        cbox_mesSalario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "Item 2", "Item 3", "Item 4" }));
         jp_salario.add(cbox_mesSalario);
         cbox_mesSalario.setBounds(680, 160, 140, 30);
+
+        cbox_anioSalario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021" }));
+        jp_salario.add(cbox_anioSalario);
+        cbox_anioSalario.setBounds(120, 160, 140, 30);
 
         panelSlider.add(jp_salario, "card5");
 
@@ -553,7 +534,6 @@ public class MenuAdminView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_buscarEmpleado;
-    private javax.swing.JButton btn_buscarEmpleadoSalario;
     public javax.swing.JButton btn_buscarSucursal;
     public javax.swing.JButton btn_empleado;
     public javax.swing.JButton btn_generarReporteMensual;
@@ -565,15 +545,15 @@ public class MenuAdminView extends javax.swing.JFrame {
     public javax.swing.JButton btn_sucursal;
     public javax.swing.JButton btn_ventas;
     public javax.swing.JComboBox<String> cbox_anio;
+    public javax.swing.JComboBox<String> cbox_anioSalario;
     public javax.swing.JComboBox<String> cbox_mes;
-    private javax.swing.JComboBox<String> cbox_mesSalario;
+    public javax.swing.JComboBox<String> cbox_mesSalario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     public javax.swing.JPanel jp_empleado;
     public javax.swing.JPanel jp_home;
     public javax.swing.JPanel jp_salario;
@@ -596,8 +576,8 @@ public class MenuAdminView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jscroll_sucursal;
     private javax.swing.JScrollPane jscroll_ventas;
     public javax.swing.JTable jtable_empleado;
+    public javax.swing.JTable jtable_salario;
     public javax.swing.JTable jtable_sucursal;
-    private javax.swing.JTable jtable_sucursal3;
     public javax.swing.JTable jtable_ventas;
     private javax.swing.JLabel lb_bienvenido;
     private javax.swing.JLabel lb_empleado;
@@ -614,7 +594,6 @@ public class MenuAdminView extends javax.swing.JFrame {
     private javax.swing.JLabel lb_ventas;
     public rojerusan.RSPanelsSlider panelSlider;
     public javax.swing.JTextField txt_buscarEmpleado;
-    private javax.swing.JTextField txt_buscarEmpleadoSalario;
     public javax.swing.JTextField txt_buscarSucursal;
     // End of variables declaration//GEN-END:variables
 }
