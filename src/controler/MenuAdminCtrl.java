@@ -5,22 +5,34 @@
  */
 package controler;
 
+import java.awt.Component;
+import model.ButtonColumn;
+import model.ReportesVentas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Vector;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import model.Empleado;
+import model.ItemMes;
 import model.Sucursal;
+import model.SucursalVentas;
+import model.VentaAdmin;
 import model.sql.SqlEmpleado;
 import model.sql.SqlSucursal;
+import model.sql.SqlVenta;
 import rojerusan.RSPanelsSlider;
 import view.LoginView;
 import view.MenuAdminView;
@@ -54,12 +66,22 @@ public class MenuAdminCtrl implements ActionListener {
         //botones empleado
         view.btn_nuevoEmpleado.addActionListener(this);
         view.btn_buscarEmpleado.addActionListener(this);
+        //boton ventas
+        view.btn_generarReporteMensual.addActionListener(this);
+        //combo box
+        view.cbox_anio.addActionListener(this);
+        view.cbox_mes.addActionListener(this);
+
+        //combobox
+        comboBoxMes();
 
         //tablas
         //sucursal
         consultarSucursal(tablaSucursal());
         //empleado
         consultarEmpleado(tablaEmpleado());
+        //ventas
+        consultarVentasSucursales(tablaVentas(), generarVentasSucursales(sumarVentasSucursal(getMes(), getAnio())));
     }
 
     @Override
@@ -73,6 +95,9 @@ public class MenuAdminCtrl implements ActionListener {
 
         //todos los botones de la vista empleado
         empleado(e);
+
+        //todos los botones de la vista ventas
+        ventas(e);
 
         // boton de logout
         if (e.getSource() == view.btn_logout) {
@@ -543,6 +568,172 @@ public class MenuAdminCtrl implements ActionListener {
         }
 
         return tablecolumnmodel;
+    }
+
+    private void ventas(ActionEvent e) {
+
+        //generar reporte de todas las sucursales
+        if (e.getSource() == view.btn_generarReporteMensual) {
+            ReportesVentas reporteSucursal = new ReportesVentas();
+            reporteSucursal.generarReporteSucursales(getMes(), getAnio());
+        }
+
+        //cbox año y mes
+        if (e.getSource() == view.cbox_anio) {
+            //consulta de las ventas
+            consultarVentasSucursales(tablaVentas(), generarVentasSucursales(sumarVentasSucursal(getMes(), getAnio())));
+            System.out.println("entro");
+        }
+
+        if (e.getSource() == view.cbox_mes) {
+            //consulta de las ventas
+            consultarVentasSucursales(tablaVentas(), generarVentasSucursales(sumarVentasSucursal(getMes(), getAnio())));
+        }
+
+    }
+
+    public DefaultTableModel tablaVentas() {
+        //Empleado
+        DefaultTableModel tablaventas = new DefaultTableModel();
+        view.jtable_ventas.setModel(tablaventas);
+        tablaventas.addColumn("Id sucursal");
+        tablaventas.addColumn("Ventas totales");
+        tablaventas.addColumn(" ");
+
+        //tamaño de las columnas 
+        //tamanioColumnas(view.jtable_ventas, 32);
+        //tamaño de las filas
+        view.jtable_ventas.setRowHeight(32);
+
+        return tablaventas;
+    }
+
+    private HashMap<Integer, Float> sumarVentasSucursal(int mes, int anio) {
+        SqlVenta sqlventa = new SqlVenta();
+        ArrayList<VentaAdmin> ventas = sqlventa.obtenerVentas(mes, anio);
+        //id sucursal | ventas totales
+        HashMap<Integer, Float> hashMap = new HashMap<>();
+
+        //iteracion por el resulset de todas las ventas que se hicieron en el año y mes indicados
+        for (VentaAdmin venta : ventas) {
+
+            //si el hashmap contiene el id de la sucursal
+            if (hashMap.containsKey(venta.getId_sucursal())) {
+                //ya se tenia la sucursal registrada
+                float total = venta.getPrecio() * venta.getCantidad() + hashMap.get(venta.getId_sucursal());
+                //se suma al total el resultado de la venta al valor del hashmap
+                hashMap.replace(venta.getId_sucursal(), total);
+            } else {
+                //es la primera vez que se encuentra con esa sucursal
+                hashMap.put(venta.getId_sucursal(), venta.getPrecio() * venta.getCantidad());
+            }
+
+        }
+
+        return hashMap;
+
+    }
+
+    private ArrayList<SucursalVentas> generarVentasSucursales(HashMap<Integer, Float> hashMap) {
+        //se crea el objeto de tipo VentaAdmin, que es el que se va a mostrar en la tabla
+        SucursalVentas sucursalVentas = null;
+        ArrayList<SucursalVentas> ventasList = new ArrayList<>();
+        for (int id_sucursal : hashMap.keySet()) {
+            sucursalVentas = new SucursalVentas();
+            sucursalVentas.setId_sucursal(id_sucursal);
+            sucursalVentas.setVentas_totales(hashMap.get(id_sucursal));
+
+            ventasList.add(sucursalVentas);
+        }
+
+        return ventasList;
+    }
+
+    private void consultarVentasSucursales(DefaultTableModel table, ArrayList<SucursalVentas> ventas) {
+        //lista de objetos empleados
+        ArrayList<SucursalVentas> sucursalVentasList = ventas;
+
+        //no hay ningun empleado
+        if (sucursalVentasList == null) {
+            JOptionPane.showMessageDialog(null, "Aún no hay ventas", "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            //iteramos por todos los objetos
+            for (SucursalVentas sucursalVentas : sucursalVentasList) {
+                //se crea un arreglo de tipo object en donde se le asigna a cada posicion la informacion de cada sucursal ventas
+                Object[] sucursalVentasObject = new Object[3];
+                sucursalVentasObject[0] = sucursalVentas.getId_sucursal();
+                sucursalVentasObject[1] = sucursalVentas.getVentas_totales();
+
+                sucursalVentasObject[2] = new String("Generar Reporte");
+
+                //se agrega la fila con la informacion
+                table.addRow(sucursalVentasObject);
+            }
+        }
+
+        //se crean los botones en la tabla
+        //boton de actualizar
+        ButtonColumn btnGenerarReporte = new ButtonColumn(view.jtable_ventas, generarReporteSucursal(), 2);
+    }
+
+    private Action generarReporteSucursal() {
+        Action reporte = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ReportesVentas reporte = new ReportesVentas();
+
+                JTable table = (JTable) e.getSource();
+                int row = table.getSelectedRow();
+                //se obtiene el id de la sucursal
+                int idSucursal = (int) table.getModel().getValueAt(row, 0);
+
+                reporte.generarReporteSucursal(getMes(), getAnio(), idSucursal);
+            }
+        };
+        return reporte;
+    }
+
+    private void comboBoxMes() {
+        Vector model = new Vector();
+        String meses[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+        for (int i = 0; i < 12; i++) {
+            model.addElement(new ItemMes(i + 1, meses[i]));
+        }
+        view.cbox_mes.setModel(new DefaultComboBoxModel(model));
+        view.cbox_mes.setRenderer(new ItemRenderer());
+        view.cbox_anio.setSelectedItem("Enero");
+    }
+
+    private int getAnio() {
+        return Integer.parseInt(view.cbox_anio.getSelectedItem().toString());
+    }
+
+    private int getMes() {
+        ItemMes mes = (ItemMes) view.cbox_mes.getSelectedItem();
+        return mes.getId_mes();
+    }
+
+    // clase que permite hacer un render de los valores key value 
+    class ItemRenderer extends BasicComboBoxRenderer {
+
+        public Component getListCellRendererComponent(
+                JList list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+            super.getListCellRendererComponent(list, value, index,
+                    isSelected, cellHasFocus);
+
+            if (value != null) {
+                ItemMes item = (ItemMes) value;
+                setText(item.getMes());
+            }
+
+            if (index == -1) {
+                ItemMes item = (ItemMes) value;
+                setText("" + item.getId_mes());
+            }
+
+            return this;
+        }
     }
 
 }

@@ -84,9 +84,9 @@ public class MenuAdminView extends javax.swing.JFrame {
         jp_ventas = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jscroll_ventas = new javax.swing.JScrollPane();
-        jtable_sucursal2 = new javax.swing.JTable();
-        cbox_anio = new javax.swing.JComboBox<>();
+        jtable_ventas = new javax.swing.JTable();
         cbox_mes = new javax.swing.JComboBox<>();
+        cbox_anio = new javax.swing.JComboBox<>();
         btn_generarReporteMensual = new javax.swing.JButton();
         jp_salario = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -419,8 +419,8 @@ public class MenuAdminView extends javax.swing.JFrame {
         jp_ventas.add(jLabel5);
         jLabel5.setBounds(10, 10, 910, 50);
 
-        jtable_sucursal2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jtable_sucursal2.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_ventas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jtable_ventas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -431,18 +431,17 @@ public class MenuAdminView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jscroll_ventas.setViewportView(jtable_sucursal2);
+        jscroll_ventas.setViewportView(jtable_ventas);
 
         jp_ventas.add(jscroll_ventas);
         jscroll_ventas.setBounds(50, 240, 840, 140);
 
-        cbox_anio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "Item 2", "Item 3", "Item 4" }));
-        jp_ventas.add(cbox_anio);
-        cbox_anio.setBounds(80, 130, 130, 30);
-
-        cbox_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "Item 2", "Item 3", "Item 4" }));
         jp_ventas.add(cbox_mes);
         cbox_mes.setBounds(710, 130, 130, 30);
+
+        cbox_anio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021" }));
+        jp_ventas.add(cbox_anio);
+        cbox_anio.setBounds(80, 130, 130, 30);
 
         btn_generarReporteMensual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/btn_generarReporteMensual.png"))); // NOI18N
         btn_generarReporteMensual.setBorder(null);
@@ -463,7 +462,7 @@ public class MenuAdminView extends javax.swing.JFrame {
         jp_salario.add(jLabel6);
         jLabel6.setBounds(10, 20, 900, 50);
 
-        jtable_sucursal3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jtable_sucursal3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jtable_sucursal3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -486,7 +485,6 @@ public class MenuAdminView extends javax.swing.JFrame {
         jLabel7.setBounds(80, 190, 260, 3);
 
         txt_buscarEmpleadoSalario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_buscarEmpleadoSalario.setText("Buscar...");
         txt_buscarEmpleadoSalario.setToolTipText("");
         txt_buscarEmpleadoSalario.setBorder(null);
         jp_salario.add(txt_buscarEmpleadoSalario);
@@ -501,7 +499,7 @@ public class MenuAdminView extends javax.swing.JFrame {
 
         cbox_mesSalario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "Item 2", "Item 3", "Item 4" }));
         jp_salario.add(cbox_mesSalario);
-        cbox_mesSalario.setBounds(680, 160, 140, 40);
+        cbox_mesSalario.setBounds(680, 160, 140, 30);
 
         panelSlider.add(jp_salario, "card5");
 
@@ -558,7 +556,7 @@ public class MenuAdminView extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscarEmpleadoSalario;
     public javax.swing.JButton btn_buscarSucursal;
     public javax.swing.JButton btn_empleado;
-    private javax.swing.JButton btn_generarReporteMensual;
+    public javax.swing.JButton btn_generarReporteMensual;
     public javax.swing.JButton btn_home;
     public javax.swing.JButton btn_logout;
     public javax.swing.JButton btn_nuevaSucursal;
@@ -566,8 +564,8 @@ public class MenuAdminView extends javax.swing.JFrame {
     public javax.swing.JButton btn_salario;
     public javax.swing.JButton btn_sucursal;
     public javax.swing.JButton btn_ventas;
-    private javax.swing.JComboBox<String> cbox_anio;
-    private javax.swing.JComboBox<String> cbox_mes;
+    public javax.swing.JComboBox<String> cbox_anio;
+    public javax.swing.JComboBox<String> cbox_mes;
     private javax.swing.JComboBox<String> cbox_mesSalario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -599,8 +597,8 @@ public class MenuAdminView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jscroll_ventas;
     public javax.swing.JTable jtable_empleado;
     public javax.swing.JTable jtable_sucursal;
-    private javax.swing.JTable jtable_sucursal2;
     private javax.swing.JTable jtable_sucursal3;
+    public javax.swing.JTable jtable_ventas;
     private javax.swing.JLabel lb_bienvenido;
     private javax.swing.JLabel lb_empleado;
     private javax.swing.JLabel lb_home;

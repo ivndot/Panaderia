@@ -80,8 +80,30 @@ CREATE TABLE venta(
 
 );
 
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (100,"2020-12-08","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (100,"2020-12-08","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (100,"2020-12-08","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2020-12-08","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2020-12-08","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (102,"2020-12-08","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (102,"2020-12-08","13:30:00");
+
 INSERT INTO venta (id_sucursal, fecha, hora) VALUES (100,"2021-01-08","13:30:00");
-INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2021-01-09","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (100,"2021-01-09","15:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (100,"2021-01-10","11:00:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (100,"2021-01-11","15:00:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2021-01-03","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2021-01-05","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2021-01-07","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2021-01-11","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2021-01-12","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (101,"2021-01-10","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (102,"2021-01-10","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (102,"2021-01-04","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (102,"2021-01-03","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (102,"2021-01-07","13:30:00");
+INSERT INTO venta (id_sucursal, fecha, hora) VALUES (102,"2021-01-09","13:30:00");
+
 
 DROP TABLE IF EXISTS producto;
 
@@ -117,9 +139,31 @@ CREATE TABLE ventas_producto(
 INSERT INTO ventas_producto VALUES (1,1,3);
 INSERT INTO ventas_producto VALUES (1,2,4);
 INSERT INTO ventas_producto VALUES (2,3,5);
+INSERT INTO ventas_producto VALUES (3,1,3);
+INSERT INTO ventas_producto VALUES (4,2,4);
+INSERT INTO ventas_producto VALUES (5,3,5);
+INSERT INTO ventas_producto VALUES (6,1,3);
+INSERT INTO ventas_producto VALUES (7,2,4);
+INSERT INTO ventas_producto VALUES (8,3,5);
+INSERT INTO ventas_producto VALUES (9,1,3);
+INSERT INTO ventas_producto VALUES (10,2,4);
+INSERT INTO ventas_producto VALUES (11,3,5);
+INSERT INTO ventas_producto VALUES (11,1,3);
+INSERT INTO ventas_producto VALUES (12,2,4);
+INSERT INTO ventas_producto VALUES (13,3,5);
+INSERT INTO ventas_producto VALUES (14,1,3);
+INSERT INTO ventas_producto VALUES (15,2,4);
+INSERT INTO ventas_producto VALUES (16,3,5);
+INSERT INTO ventas_producto VALUES (17,1,3);
+INSERT INTO ventas_producto VALUES (18,2,4);
+INSERT INTO ventas_producto VALUES (19,3,5);
+INSERT INTO ventas_producto VALUES (20,1,3);
+INSERT INTO ventas_producto VALUES (21,2,4);
+INSERT INTO ventas_producto VALUES (22,3,5);
 
 /*
-SELECT venta.id_venta, venta.id_sucursal, venta.fecha, producto.id_producto, producto.precio, ventas_producto.cantidad 
-FROM venta INNER JOIN ventas_producto ON venta.id_venta = ventas_producto.id_venta 
+SELECT sucursal.descripcion, venta.id_venta, venta.id_sucursal, venta.fecha, producto.id_producto, producto.precio, ventas_producto.cantidad 
+FROM sucursal INNER JOIN venta ON sucursal.id_sucursal = venta.id_sucursal
+INNER JOIN ventas_producto ON venta.id_venta = ventas_producto.id_venta 
 INNER JOIN producto ON ventas_producto.id_producto = producto.id_producto WHERE MONTH(venta.fecha) = 1 AND YEAR(venta.fecha) = 2021;
 */
