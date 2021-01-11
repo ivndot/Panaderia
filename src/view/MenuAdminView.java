@@ -86,12 +86,16 @@ public class MenuAdminView extends javax.swing.JFrame {
         cbox_mes = new javax.swing.JComboBox<>();
         cbox_anio = new javax.swing.JComboBox<>();
         btn_generarReporteMensual = new javax.swing.JButton();
+        lb_mes = new javax.swing.JLabel();
+        lb_anio = new javax.swing.JLabel();
         jp_salario = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jscroll_salario = new javax.swing.JScrollPane();
         jtable_salario = new javax.swing.JTable();
         cbox_mesSalario = new javax.swing.JComboBox<>();
         cbox_anioSalario = new javax.swing.JComboBox<>();
+        lb_anio1 = new javax.swing.JLabel();
+        lb_mes1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -446,6 +450,18 @@ public class MenuAdminView extends javax.swing.JFrame {
         jp_ventas.add(btn_generarReporteMensual);
         btn_generarReporteMensual.setBounds(290, 180, 350, 40);
 
+        lb_mes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lb_mes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_mes.setText("Mes");
+        jp_ventas.add(lb_mes);
+        lb_mes.setBounds(710, 105, 130, 20);
+
+        lb_anio.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lb_anio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_anio.setText("Año");
+        jp_ventas.add(lb_anio);
+        lb_anio.setBounds(80, 105, 130, 20);
+
         panelSlider.add(jp_ventas, "card4");
 
         jp_salario.setBackground(new java.awt.Color(255, 255, 255));
@@ -481,6 +497,18 @@ public class MenuAdminView extends javax.swing.JFrame {
         cbox_anioSalario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021" }));
         jp_salario.add(cbox_anioSalario);
         cbox_anioSalario.setBounds(120, 160, 140, 30);
+
+        lb_anio1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lb_anio1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_anio1.setText("Año");
+        jp_salario.add(lb_anio1);
+        lb_anio1.setBounds(120, 130, 140, 20);
+
+        lb_mes1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lb_mes1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_mes1.setText("Mes");
+        jp_salario.add(lb_mes1);
+        lb_mes1.setBounds(680, 130, 140, 20);
 
         panelSlider.add(jp_salario, "card5");
 
@@ -579,11 +607,15 @@ public class MenuAdminView extends javax.swing.JFrame {
     public javax.swing.JTable jtable_salario;
     public javax.swing.JTable jtable_sucursal;
     public javax.swing.JTable jtable_ventas;
+    private javax.swing.JLabel lb_anio;
+    private javax.swing.JLabel lb_anio1;
     private javax.swing.JLabel lb_bienvenido;
     private javax.swing.JLabel lb_empleado;
     private javax.swing.JLabel lb_home;
     private javax.swing.JLabel lb_iconUser;
     private javax.swing.JLabel lb_logo;
+    private javax.swing.JLabel lb_mes;
+    private javax.swing.JLabel lb_mes1;
     private javax.swing.JLabel lb_nuevaSucursal;
     private javax.swing.JLabel lb_nuevoEmpleado;
     private javax.swing.JLabel lb_rol;
